@@ -1,0 +1,157 @@
+.artist-banner {
+    position: relative;
+    width: 100%;
+    height: 20vh;
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+            linear-gradient(
+                    to bottom,
+                    var(--banner-start),
+                    var(--banner-end)
+            );
+}
+
+.artist-banner-bg,
+.artist-banner-fallback {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.artist-banner-bg {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    transform: scale(1.35);
+    filter: blur(56px);
+
+    opacity: 0.22;
+}
+
+.artist-banner-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background:
+            linear-gradient(
+                    to right,
+                    hsl(0 0% 0% / 0.6) 0%,
+                    hsl(0 0% 0% / 0.15) 25%,
+                    hsl(0 0% 0% / 0) 50%,
+                    hsl(0 0% 0% / 0.15) 75%,
+                    hsl(0 0% 0% / 0.6) 100%
+            );
+}
+
+.artist-banner-fallback {
+    background:
+            radial-gradient(
+                    ellipse at center,
+                    color-mix(in srgb, var(--banner-start) 70%, white 30%) 0%,
+                    var(--banner-start) 40%,
+                    var(--banner-end) 100%
+            );
+    opacity: 0.9;
+}
+
+.artist-banner-fg {
+    position: relative;
+    z-index: 1;
+
+    max-width: min(88vw, 64rem);
+    width: auto;
+    height: auto;
+    object-fit: contain;
+
+    filter:
+            drop-shadow(0 0.25rem 1.5rem hsl(0 0% 0% / 0.28));
+
+    mask-image: linear-gradient(
+            to right,
+            transparent 0%,
+            black 12%,
+            black 88%,
+            transparent 100%
+    );
+
+    -webkit-mask-image: linear-gradient(
+            to right,
+            transparent 0%,
+            black 12%,
+            black 88%,
+            transparent 100%
+    );
+}
+
+.artist-banner-bottom-fade {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+
+    background:
+            linear-gradient(
+                    to bottom,
+                    hsl(0 0% 0% / 0) 0%,
+                    hsl(0 0% 0% / 0) 72%,
+                    hsl(0 0% 0% / 0.18) 88%,
+                    var(--bg) 100%
+            );
+}
+
+@media (prefers-color-scheme: light) {
+
+
+    .artist-banner-bg {
+        opacity: 0.14;
+        filter: blur(56px) brightness(1.3);
+    }
+
+    .artist-banner-bg::after {
+        background:
+                linear-gradient(
+                        to right,
+                        hsl(0 0% 100% / 0.6) 0%,
+                        hsl(0 0% 100% / 0.15) 25%,
+                        hsl(0 0% 100% / 0) 50%,
+                        hsl(0 0% 100% / 0.15) 75%,
+                        hsl(0 0% 100% / 0.6) 100%
+                );
+    }
+
+    .artist-banner-bottom-fade {
+        background:
+                linear-gradient(
+                        to bottom,
+                        hsl(0 0% 100% / 0) 0%,
+                        hsl(0 0% 100% / 0) 72%,
+                        hsl(0 0% 100% / 0.12) 88%,
+                        var(--bg) 100%
+                );
+    }
+
+    .artist-banner-fg {
+        filter:
+                drop-shadow(0 0.2rem 1rem hsl(0 0% 0% / 0.12));
+    }
+}
+
+@media (max-aspect-ratio: 1/1) {
+    .artist-banner {
+        height: 16vh;
+        min-height: 7.5rem;
+        max-height: 10.5rem;
+    }
+
+    .artist-banner-fg {
+        max-width: min(92vw, 64rem);
+        max-height: 96%;
+    }
+}

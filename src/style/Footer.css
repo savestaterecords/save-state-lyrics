@@ -1,8 +1,7 @@
 .site-footer {
-    width: 100%;
+    width: 100vw;
     display: flex;
     justify-content: center;
-    margin-top: 3rem;
 }
 
 .site-footer p {

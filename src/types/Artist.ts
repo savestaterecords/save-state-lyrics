@@ -1,11 +1,13 @@
-export type ArtistListEntry = {
-    slug: string
-    name: string
+import type { Release } from "./Release"
+
+export type ArtistTheme = {
+    bannerStart?: string
+    bannerEnd?: string
 }
 
-export const artists: ArtistListEntry[] = [
-    { slug: "lllll", name: "lllll" },
-    { slug: "posadas", name: "Posadas" },
-    { slug: "reset-memory", name: "reset memory" },
-    { slug: "xrosz", name: "XROSZ" },
-]
+export type Artist = {
+    slug: string
+    name: string
+    releases: Release[]
+    theme?: ArtistTheme
+}
