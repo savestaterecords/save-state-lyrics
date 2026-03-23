@@ -3,6 +3,7 @@ import HomeView from "./views/HomeView"
 import Navbar from "./components/Navbar.tsx";
 import Footer from "./components/Footer.tsx";
 import ArtistRoute from "./routes/ArtistRoute.tsx";
+import ReleaseRoute from "./routes/ReleaseRoute.tsx";
 
 
 export default function App() {
@@ -14,6 +15,7 @@ export default function App() {
                 <Routes>
                     <Route path="/" element={<HomeView />} />
                     <Route path="/:artistSlug/" element={<ArtistRoute />} />
+                    <Route path="/:artistSlug/:releaseSlug/" element={<ReleaseRoute />} />
                 </Routes>
             </main>
 

@@ -1,0 +1,220 @@
+.release-page {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: stretch;
+}
+
+.release-head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 0.5rem;
+    padding-top: 3rem;
+    padding-bottom: 1rem;
+}
+
+.release-title {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+}
+
+.release-meta {
+    color: var(--subtle);
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 400;
+    line-height: 1.3;
+}
+
+.release-artist-link {
+    color: var(--subtle);
+    text-decoration: none;
+}
+
+.release-artist-link:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
+    text-underline-offset: 0.14em;
+}
+
+.release-meta-separator {
+    color: var(--subtle);
+}
+
+.release-art-frame {
+    border-radius: 1rem;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.release-art {
+    width: 50vw;
+    height: 50vw;
+    max-height: 15rem;
+    object-fit: contain;
+    display: block;
+}
+
+.release-neck {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 2rem;
+    width: 100%;
+}
+
+.release-tracklist-disclosure {
+
+    border: 1px solid hsl(0 0% 100% / 0.12);
+    border-radius: 12px;
+
+    overflow: hidden;
+
+    transition: border-color 180ms ease;
+}
+
+.release-tracklist-summary {
+    width: 100%;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 500;
+
+    color: var(--subtle);
+    text-align: center;
+
+    /*padding: 0.7rem 0.9rem;*/
+
+    transition: color 200ms ease;
+}
+
+.release-tracklist-summary:hover,
+.release-tracklist-disclosure.is-open .release-tracklist-summary {
+    color: var(--text);
+}
+
+.release-tracklist-disclosure.is-open .release-tracklist-summary {
+    border-bottom: 1px solid hsl(0 0% 100% / 0.08);
+}
+
+.release-tracklist-shell {
+    display: grid;
+    grid-template-rows: 0fr;
+    opacity: 0;
+
+    transition:
+            grid-template-rows 220ms ease,
+            opacity 180ms ease;
+}
+
+.release-tracklist-shell.is-open {
+    grid-template-rows: 1fr;
+    opacity: 1;
+}
+
+.release-tracklist {
+    min-height: 0;
+
+    list-style: none;
+    margin: 0;
+    padding: 0.5rem 0.9rem 0rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.release-track-item {
+    color: var(--text);
+    text-align: center;
+}
+
+.release-track-title {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.25;
+    letter-spacing: 0.01em;
+}
+
+.release-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3.5rem;
+    padding-bottom: 4rem;
+}
+
+.release-lyric-block {
+    width: min(100%, 42rem);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.release-lyric-title {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    font-weight: 300;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+}
+
+.release-lyric-meta {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 500;
+    line-height: 1.3;
+    color: var(--subtle);
+}
+
+.release-lyric-meta-separator {
+    color: var(--subtle);
+}
+
+.release-lyric-pv {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    line-height: 1.2;
+}
+
+.release-lyric-pv-link {
+    color: var(--link);
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+}
+
+.release-lyric-pv-link:hover {
+    color: var(--link-hover);
+}
+
+.release-lyric-pv-link:active {
+    color: var(--link-active);
+}
+
+.release-lyric-text {
+    width: 100%;
+
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.45;
+    letter-spacing: 0.01em;
+
+    white-space: pre-line;
+    text-align: center;
+}

@@ -12,4 +12,5 @@ export type Release = {
     artistSlug: string
     type: ReleaseType
     releaseDate: number
+    tracklist: { title: string; slug: string }[]
 }
