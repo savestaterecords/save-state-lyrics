@@ -7,7 +7,7 @@ const laEntrega: Lyric = {
         title: "La Entrega",
         composer: ["Dan"],
         lyricist: ["Dan"],
-        PV: "a",
+        PV: "youtu.be/3HO45RVcnbA",
     },
 
     body: {
@@ -36,12 +36,10 @@ const laEntrega: Lyric = {
         nuestro amor
         `,
         credits: `
-        lyrics by Dan · music by Dan & Rain · production by Rain
-        directed by Lorena & Gabriela
-
-        performance videography by 9thcircle @9nthcrcle
-        narrative videography by gabriela @g3mstone
-        artist photography by lorena @mortuaeintus
+        lyrics, music, and production by Dan
+        directed by Rain
+        
+        as herself, Maivy @kimi.kosakurai
         `,
     },
 }
