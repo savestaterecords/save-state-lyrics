@@ -1,0 +1,20 @@
+.site-navbar {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.site-column {
+    width: min(100%, 46rem);
+    margin: 0 auto;
+    padding: 1rem 1.25rem;
+}
+
+.navbar-brand {
+    font-family: var(--font-serif), serif;
+    color: var(--text);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1;
+}

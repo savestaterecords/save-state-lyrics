@@ -1,0 +1,16 @@
+.site-footer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+}
+
+.site-footer p {
+    color: var(--subtle);
+}
+
+.site-footer p {
+    color: var(--subtle);
+    font-size: 0.4rem;
+    line-height: 1.4;
+}
