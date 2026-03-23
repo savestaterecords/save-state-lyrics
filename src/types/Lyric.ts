@@ -2,9 +2,9 @@ export type Lyric = {
     slug: string
 
     head: {
-        title: "Sinai",
-        composer: ["Dan", "Rain"],
-        lyricist: ["Dan"],
+        title: string
+        composer: string[]
+        lyricist: string[]
         PV: string | null
     }
 

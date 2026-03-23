@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 import { artists } from "../data/registry.ts"
 import type { Release } from "../types/Release.ts"
 import "../style/ReleaseView.css"
-import { useState } from "react"
+// import { useState } from "react"
 import {getLyricBySlug} from "../utils/resolveLyricsBySlug.ts";
 
 const releaseImages = import.meta.glob("../img/release/*/*.{jpg,jpeg,webp}", {
@@ -57,11 +57,18 @@ function formatReleaseDate(date: number): string {
     return `${months[monthIndex]} ${day}, ${year}`
 }
 
+// function formatNameList(names: string[]): string {
+//     if (names.length === 0) return ""
+//     if (names.length === 1) return names[0]
+//     if (names.length === 2) return `${names[0]} and ${names[1]}`
+//     return `${names.slice(0, -1).join(", ")}, and ${names[names.length - 1]}`
+// }
+
 export default function ReleaseView({ release }: ReleaseViewProps) {
     const artist = artists.find((entry) => entry.slug === release.artistSlug)
     const artistName = artist?.name ?? release.artistSlug
     const releaseImage = getReleaseImage(release.artistSlug, release.slug)
-    const [tracklistOpen, setTracklistOpen] = useState(false)
+    // const [tracklistOpen, setTracklistOpen] = useState(false)
 
     return (
         <div className="release-page">
@@ -91,28 +98,28 @@ export default function ReleaseView({ release }: ReleaseViewProps) {
                 </p>
             </div>
 
-            <div className="site-column release-neck">
-                <div className={`release-tracklist-disclosure${tracklistOpen ? " is-open" : ""}`}>
-                    <button
-                        type="button"
-                        className="release-tracklist-summary"
-                        onClick={() => setTracklistOpen((open) => !open)}
-                        aria-expanded={tracklistOpen}
-                    >
-                        Tracklist
-                    </button>
+            {/*<div className="site-column release-neck">*/}
+            {/*    <div className={`release-tracklist-disclosure${tracklistOpen ? " is-open" : ""}`}>*/}
+            {/*        <button*/}
+            {/*            type="button"*/}
+            {/*            className="release-tracklist-summary"*/}
+            {/*            onClick={() => setTracklistOpen((open) => !open)}*/}
+            {/*            aria-expanded={tracklistOpen}*/}
+            {/*        >*/}
+            {/*            Tracklist*/}
+            {/*        </button>*/}
 
-                    <div className={`release-tracklist-shell${tracklistOpen ? " is-open" : ""}`}>
-                        <ol className="release-tracklist">
-                            {release.tracklist.map((track) => (
-                                <li key={track.slug} className="release-track-item">
-                                    <span className="release-track-title">{track.title}</span>
-                                </li>
-                            ))}
-                        </ol>
-                    </div>
-                </div>
-            </div>
+            {/*        <div className={`release-tracklist-shell${tracklistOpen ? " is-open" : ""}`}>*/}
+            {/*            <ol className="release-tracklist">*/}
+            {/*                {release.tracklist.map((track) => (*/}
+            {/*                    <li key={track.slug} className="release-track-item">*/}
+            {/*                        <span className="release-track-title">{track.title}</span>*/}
+            {/*                    </li>*/}
+            {/*                ))}*/}
+            {/*            </ol>*/}
+            {/*        </div>*/}
+            {/*    </div>*/}
+            {/*</div>*/}
 
             <div className="site-column release-body">
                 {release.tracklist.map((track) => {
@@ -120,10 +127,11 @@ export default function ReleaseView({ release }: ReleaseViewProps) {
 
                     if (!lyric) {
                         return (
-                            <section key={track.slug} className="release-lyric-block missing">
-                                <h2>{track.title}</h2>
-                                <p>Missing lyric</p>
-                            </section>
+                            <></>
+                            // <section key={track.slug} className="release-lyric-block missing">
+                            //     <h2>{track.title}</h2>
+                            //     <p>Missing lyric</p>
+                            // </section>
                         )
                     }
 
@@ -137,17 +145,29 @@ export default function ReleaseView({ release }: ReleaseViewProps) {
                                 {lyric.head.title}
                             </h2>
 
-                            <p className="release-lyric-meta">
-                                {lyric.head.lyricist.join(", ")} · {lyric.head.composer.join(", ")}
-                            </p>
+                            {/*{(lyric.head.lyricist.length > 0 || lyric.head.composer.length > 0) && (*/}
+                            {/*    <div className="release-lyric-credits">*/}
+                            {/*        <span className="release-lyric-credit release-lyric-credit-left">*/}
+                            {/*            {lyric.head.lyricist.length > 0 */}
+                            {/*                ? `lyrics by ${formatNameList(lyric.head.lyricist)}` */}
+                            {/*                : ""}*/}
+                            {/*        </span>*/}
 
-                            {lyric.head.PV && (
-                                <p className="release-lyric-pv">
-                                    <a href={lyric.head.PV} target="_blank" rel="noreferrer">
-                                        PV
-                                    </a>
-                                </p>
-                            )}
+                            {/*        <span className="release-lyric-credit release-lyric-credit-right">*/}
+                            {/*            {lyric.head.composer.length > 0 */}
+                            {/*                ? `music by ${formatNameList(lyric.head.composer)}` */}
+                            {/*                : ""}*/}
+                            {/*        </span>*/}
+                            {/*    </div>*/}
+                            {/*)}*/}
+
+                            {/*{lyric.head.PV && (*/}
+                            {/*    <p className="release-lyric-pv">*/}
+                            {/*        <a href={lyric.head.PV} target="_blank" rel="noreferrer">*/}
+                            {/*            PV*/}
+                            {/*        </a>*/}
+                            {/*    </p>*/}
+                            {/*)}*/}
 
                             <p className="release-lyric-text">
                                 {lyric.body.lyrics}

@@ -13,7 +13,7 @@
 
     gap: 0.5rem;
     padding-top: 3rem;
-    padding-bottom: 1rem;
+    padding-bottom: 1.5rem;
 }
 
 .release-title {
@@ -69,6 +69,7 @@
     align-items: center;
     padding-bottom: 2rem;
     width: 100%;
+    display: none;
 }
 
 .release-tracklist-disclosure {
@@ -153,12 +154,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 3.5rem;
+    gap: 1.5rem;
     padding-bottom: 4rem;
 }
 
 .release-lyric-block {
-    width: min(100%, 42rem);
+    width: min(100%, 420rem);
 
     display: flex;
     flex-direction: column;
@@ -172,6 +173,7 @@
     font-weight: 300;
     line-height: 1.15;
     letter-spacing: -0.01em;
+    margin-bottom: 0.25rem;
 }
 
 .release-lyric-meta {
@@ -186,10 +188,41 @@
     color: var(--subtle);
 }
 
+.release-lyric-credits {
+    width: min(90vw, 48rem);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+
+    font-family: var(--font-sans);
+    font-size: 0.4rem;
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--subtle);
+    letter-spacing: 0.01em;
+}
+
+.release-lyric-credit {
+    margin-top: -.75rem;
+    flex: 0 1 auto;
+    max-width: 30%;
+}
+
+.release-lyric-credit-left {
+    text-align: left;
+}
+
+.release-lyric-credit-right {
+    text-align: right;
+}
+
 .release-lyric-pv {
     font-family: var(--font-sans);
     font-size: 0.9rem;
     line-height: 1.2;
+    display: none;
 }
 
 .release-lyric-pv-link {
@@ -208,12 +241,12 @@
 
 .release-lyric-text {
     width: 100%;
-
-    font-family: var(--font-serif);
-    font-size: 1rem;
-    font-weight: 300;
-    line-height: 1.45;
-    letter-spacing: 0.01em;
+    margin-top: -1rem;
+    font-family: var(--font-sans);
+    font-size: .5rem;
+    font-weight: 400;
+    line-height: 1.55;
+    letter-spacing: 0;
 
     white-space: pre-line;
     text-align: center;
