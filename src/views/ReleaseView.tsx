@@ -4,6 +4,7 @@ import type { Release } from "../types/Release.ts"
 import "../style/ReleaseView.css"
 // import { useState } from "react"
 import {getLyricBySlug} from "../utils/resolveLyricsBySlug.ts";
+import type {CSSProperties} from "react";
 
 const releaseImages = import.meta.glob("../img/release/*/*.{jpg,jpeg,webp}", {
     eager: true,
@@ -70,8 +71,19 @@ export default function ReleaseView({ release }: ReleaseViewProps) {
     const releaseImage = getReleaseImage(release.artistSlug, release.slug)
     // const [tracklistOpen, setTracklistOpen] = useState(false)
 
+    const theme = release.theme ?? null
+
+    const releaseThemeStyle = {
+        "--theme-h": String(theme?.Hue ?? 0),
+        "--theme-s": theme?.strength ?? "0%",
+        "--theme-h2": String(theme?.falloffHue ?? theme?.Hue ?? 0),
+        "--theme-s-delta": theme?.falloffStrength ?? "0%",
+        "--theme-l-delta": theme?.toWhite ?? "0%",
+        "--theme-titles-h": String(theme?.titlesHue ?? theme?.falloffHue ?? theme?.Hue ?? 0),
+    } as CSSProperties
+
     return (
-        <div className="release-page">
+        <div className="release-page" style={releaseThemeStyle}>
             <div className="site-column release-head">
                 {releaseImage && (
                     <div className="release-art-frame">
@@ -169,9 +181,35 @@ export default function ReleaseView({ release }: ReleaseViewProps) {
                             {/*    </p>*/}
                             {/*)}*/}
 
-                            <p className="release-lyric-text">
-                                {lyric.body.lyrics}
-                            </p>
+                            {"blocks" in lyric.body ? (
+                                lyric.body.blocks.map((block, index) => {
+                                    if (block.type === "scripture") {
+                                        return (
+                                            <p key={index} className="release-lyric-text scripture">
+                                                {block.text}
+                                            </p>
+                                        )
+                                    }
+
+                                    if (block.type === "feature") {
+                                        return (
+                                            <p key={index} className="release-lyric-text feature">
+                                                {block.text}
+                                            </p>
+                                        )
+                                    }
+
+                                    return (
+                                        <p key={index} className="release-lyric-text">
+                                            {block.text}
+                                        </p>
+                                    )
+                                })
+                            ) : (
+                                <p className="release-lyric-text">
+                                    {lyric.body.lyrics}
+                                </p>
+                            )}
                         </section>
                     )
                 })}

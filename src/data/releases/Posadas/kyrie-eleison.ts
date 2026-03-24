@@ -29,6 +29,15 @@ const kyrieEleison: Release = {
     type: "album",
     releaseDate: 231031,
     tracklist: parseTrackList(titlesSource),
+
+    theme: {
+        Hue: 0,
+        strength: "50%",
+        falloffHue: 48,
+        falloffStrength: "50%",
+        toWhite: "0%",
+        titlesHue: 48,
+    }
 }
 
 export default kyrieEleison

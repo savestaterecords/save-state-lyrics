@@ -4,6 +4,7 @@ export type ReleaseType =
     | "ep"
     | "single"
     | "track"
+    | "demo"
     | "other"
 
 export type Release = {
@@ -13,4 +14,14 @@ export type Release = {
     type: ReleaseType
     releaseDate: number
     tracklist: { title: string; slug: string }[]
+    theme?: ReleaseTheme
 }
+
+export type ReleaseTheme = {
+    Hue: number
+    strength?: string
+    falloffHue?: number
+    falloffStrength?: string
+    toWhite?: string
+    titlesHue: number
+} | null

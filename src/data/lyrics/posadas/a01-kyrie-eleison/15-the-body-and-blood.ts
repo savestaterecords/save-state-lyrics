@@ -11,31 +11,45 @@ const theBodyAndBlood: Lyric = {
     },
 
     body: {
-        lyrics: `
-        this is my body
-        I give it up for you
-        
-        baby son in babylon
-        rejoice, rejoice
-        for your god is dead and gone
-        
-        if you eat my flesh, our sins we'll mend
-        and still you spit me out again
-        blissful in your arms
-        forgetting I knew heaven
-        
-        blessed shall he be who repays us
-        with what you have done
-        to us
-        
-        I burned
-        our garden by the sea
-        my offering
-        
-        I burned
-        scattered in the wind
-        into your dreams again
-        `,
+        blocks: [
+            {
+                type: "lyrics",
+                text: `
+                this is my body
+                I give it up for you
+                
+                baby son in babylon
+                rejoice, rejoice
+                for your god is dead and gone
+                
+                if you eat my flesh, our sins we'll mend
+                and still you spit me out again
+                blissful in your arms
+                forgetting I knew heaven
+                `,
+            },
+            {
+                type: "scripture",
+                text: `
+                blessed shall he be who repays you
+                with what you have done
+                to us
+                `,
+            },
+            {
+                type: "lyrics",
+                text: `
+                I burned
+                our garden by the sea
+                my offering
+                
+                I burned
+                scattered in the wind
+                into your dreams again
+                `,
+            },
+        ],
+
         credits: `
         lyrics, music, and production by Dan
         directed by Rain

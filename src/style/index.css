@@ -1,12 +1,31 @@
 :root {
-  --bg: hsl(0 0% 3%);
-  --text: hsl(0 0% 97%);
-  --accent: hsl(0 0% 70%);
-  --subtle: hsl(0 0% 62%);
+  --bg-l: 3%;
+  --text-l: 97%;
+  --subtle-l: 62%;
+  --accent-l: 70%;
+  --link-l: 75%;
+  --link-hover-l: 90%;
+  --link-active-l: 60%;
 
-  --link: hsl(0 0% 75%);
-  --link-hover: hsl(0 0% 90%);
-  --link-active: hsl(0 0% 60%);
+  --theme-h: 0;
+  --theme-s: 0%;
+  --theme-h2: var(--theme-h);
+  --theme-s-delta: 0%;
+  --theme-l-delta: 0%;
+  --theme-titles-h: 0;
+
+  --bg: hsl(0 0% var(--bg-l));
+  --text: hsl(0 0% var(--text-l));
+  --accent: hsl(0 0% var(--accent-l));
+  --subtle: hsl(0 0% var(--subtle-l));
+
+  --link: hsl(0 0% var(--link-l));
+  --link-hover: hsl(0 0% var(--link-hover-l));
+  --link-active: hsl(0 0% var(--link-active-l));
+
+  --wash-1: hsl(var(--theme-h) var(--theme-s) var(--bg-l) / 0.22);
+  --wash-2: hsl(var(--theme-h2) calc(var(--theme-s) + var(--theme-s-delta)) var(--bg-l) / 0.12);
+  --line-soft: hsl(var(--theme-h) calc(var(--theme-s) * 0.6) var(--text-l) / 0.14);
 
   --font-sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-serif: "Source Serif 4", serif;
@@ -30,13 +49,13 @@ html, body {
 
 @media (prefers-color-scheme: light) {
   :root {
-    --bg: hsl(0 0% 97%);
-    --text: hsl(0 0% 3%);
-    --accent: hsl(0 0% 40%);
-    --subtle: hsl(0 0% 55%);
-    --link: hsl(0 0% 30%);
-    --link-hover: hsl(0 0% 10%);
-    --link-active: hsl(0 0% 45%);
+    --bg-l: 97%;
+    --text-l: 3%;
+    --subtle-l: 55%;
+    --accent-l: 40%;
+    --link-l: 30%;
+    --link-hover-l: 10%;
+    --link-active-l: 45%;
   }
 }
 

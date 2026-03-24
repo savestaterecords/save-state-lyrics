@@ -35,7 +35,7 @@ const sinai: Lyric = {
         didn’t mean to leave them burning
         my god, I’m a lesson in a fucking sermon
         
-        GOD wins
+        Gᴏᴅ wins
         got me wishing I could be forgiven
         praying for the sick ones I abandoned
         the sun went down - He didn’t listen

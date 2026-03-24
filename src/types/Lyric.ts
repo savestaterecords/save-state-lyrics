@@ -1,3 +1,18 @@
+export type LyricBlock =
+    | {
+    type: "lyrics"
+    text: string
+}
+    | {
+    type: "scripture"
+    text: string
+}
+    | {
+    type: "feature"
+    artist: string
+    text: string
+}
+
 export type Lyric = {
     slug: string
 
@@ -8,8 +23,14 @@ export type Lyric = {
         PV: string | null
     }
 
-    body: {
+    body:
+        | {
         lyrics: string
+        footnotes?: string
+        credits?: string
+    }
+        | {
+        blocks: LyricBlock[]
         footnotes?: string
         credits?: string
     }

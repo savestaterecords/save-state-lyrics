@@ -40,7 +40,7 @@ const gracia: Lyric = {
         bloom and make room
         for your arrival to the garden of eden
         
-        I fucking did as i was told
+        I fucking did as I was told
         and everything I reaped, He sowed
         Jesus told a lie, He's making me atone
         I know you've gotta go, babe
@@ -50,8 +50,8 @@ const gracia: Lyric = {
         treating you like kin
         let’s learn a lesson
         don’t let it go to waste
-        i’m on my way
-        i’ve learned from my mistakes
+        I’m on my way
+        I’ve learned from my mistakes
         now let your body heal
         `,
         credits: `

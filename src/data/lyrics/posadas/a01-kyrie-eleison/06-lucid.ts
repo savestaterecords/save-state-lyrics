@@ -32,9 +32,9 @@ const lucid: Lyric = {
         I don’t wanna lose my touch
         my other five senses feeling all my regrets
         
-        when I die bury my in my Versace
+        when i die bury my in my Versace
         let me see Donatella when she comes for me
-        I hold my necklace like a rosary
+        i hold my necklace like a rosary
         asking if this is who I’m supposed to be
 
         `,
