@@ -298,3 +298,21 @@
     color: #ff0000;
     opacity: 0.85;
 }
+
+.release-foot {
+    padding-bottom: 1rem;
+}
+
+.release-credits {
+    width: 100%;
+    margin-top: -4rem;
+    font-family: var(--font-sans), serif;
+    font-size: .5rem;
+    font-weight: 400;
+    line-height: 1.55;
+    letter-spacing: 0;
+    opacity: .5;
+
+    white-space: pre-line;
+    text-align: center;
+}

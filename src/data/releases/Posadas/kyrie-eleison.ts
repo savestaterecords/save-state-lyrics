@@ -29,6 +29,45 @@ const kyrieEleison: Release = {
     type: "album",
     releaseDate: 231031,
     tracklist: parseTrackList(titlesSource),
+    credits: `
+    Posadas has been Dan Quijote and Rain.
+    
+    featured artists:
+    Day$tar @lorddaystarshandala
+    Coraline @RIPCoraline
+    Quakemaker @im.quakemaker
+    Gabriela @g3mstone
+    IMAX @imaxbeats
+    Annabel McGill
+    Lividéa
+    
+    photography & videography by:
+    Maivy Huynh @kimi.kosakurai
+    Vivien @idyll.vial
+    Lorena Euler @mortuaeintus
+    9thcircle @9nthcrcle
+    Alejandro Navarro @navalabs_official
+    Mario Lopez @antariiiio
+    Gio @xrz_gio
+    Digi @digimechanoid
+    Tinygxd @tinygxd
+    Taylor Bagley
+    Alex Howley
+    Corrine
+    Isabella
+    Katy
+    
+    Character Portrayal by:
+    Tea @mai.melancholia
+    Maya Hernandez @mayita.x
+    
+    Makeup by:
+    Rrin @ur.obsessive.wifey
+    
+    mastering of KYRIE ELEISON by Rain
+    
+    LORD, have mercy.
+    `,
 
     theme: {
         Hue: 0,

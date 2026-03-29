@@ -158,6 +158,15 @@ export default function ReleaseView({ release }: ReleaseViewProps) {
                     )
                 })}
             </div>
+
+            {release.credits && (
+                <div className="site-column release-foot">
+                    <p className="release-credits">
+                        {release.credits}
+                    </p>
+                </div>
+            )}
+
         </div>
     )
 }

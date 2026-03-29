@@ -15,6 +15,7 @@ export type Release = {
     releaseDate: number
     tracklist: { title: string; slug: string }[]
     theme?: ReleaseTheme
+    credits?: string
 }
 
 export type ReleaseTheme = {
