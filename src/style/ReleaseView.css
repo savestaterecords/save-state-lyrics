@@ -288,13 +288,13 @@
     text-align: center;
 }
 
+.feature {
+    margin-top: -1rem;
+    color: hsl(var(--theme-h), var(--theme-s), 85%);
+}
+
 .scripture {
-    margin-top: -.6rem;
-    font-family: var(--font-serif), serif;
-    font-size: .65rem;
-    font-weight: 400;
-    line-height: 1.35;
-    letter-spacing: 0;
+    font-family: var(--font-sans), serif;
     color: #ff0000;
     opacity: 0.85;
 }
