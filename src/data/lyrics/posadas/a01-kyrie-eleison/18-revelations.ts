@@ -1,6 +1,6 @@
 import type { Lyric } from "../../../../types/Lyric.ts"
 
-const Revalations: Lyric = {
+const Revelations: Lyric = {
     slug: "revelations",
 
     head: {
@@ -19,4 +19,4 @@ const Revalations: Lyric = {
     },
 }
 
-export default Revalations
+export default Revelations

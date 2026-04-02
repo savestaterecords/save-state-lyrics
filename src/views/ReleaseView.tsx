@@ -61,7 +61,6 @@ export default function ReleaseView({ release }: ReleaseViewProps) {
     const artist = artists.find((entry) => entry.slug === release.artistSlug)
     const artistName = artist?.name ?? release.artistSlug
     const releaseImage = getReleaseImage(release.artistSlug, release.slug)
-    // const [tracklistOpen, setTracklistOpen] = useState(false)
 
     const theme = release.theme ?? null
 
@@ -122,7 +121,12 @@ export default function ReleaseView({ release }: ReleaseViewProps) {
                             id={lyric.slug}
                         >
                             <h2 className="release-lyric-title">
-                                {lyric.head.title}
+                                <Link
+                                    to={`/${release.artistSlug}/${release.slug}/${track.slug}/`}
+                                    className="release-lyric-title-link"
+                                >
+                                    {lyric.head.title}
+                                </Link>
                             </h2>
 
                             {"blocks" in lyric.body ? (
