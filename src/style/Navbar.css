@@ -51,6 +51,10 @@
     color: var(--text);
     text-decoration: none;
     padding: 0.1rem 0.2rem;
+
+    user-select: none;        /* ← key fix */
+    -webkit-user-drag: none;  /* ← Safari/Chrome drag ghost fix */
+    cursor: pointer;          /* ← makes intent explicit */
 }
 
 .navbar-item:hover {

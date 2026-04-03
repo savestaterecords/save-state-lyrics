@@ -43,6 +43,54 @@
             );
 }
 
+@media (prefers-color-scheme: light) {
+    .release-page,
+    .song-page {
+        background:
+                radial-gradient(
+                        135% 121% at 50% 0%,
+                        hsl(
+                                var(--theme-h)
+                                var(--theme-s)
+                                calc(92% + (var(--theme-l-delta) * 0.15))
+                    / 0.045
+                        ) 0%,
+                        hsl(
+                                var(--theme-h2)
+                                calc(var(--theme-s) + var(--theme-s-delta))
+                                calc(94% + (var(--theme-l-delta) * 0.1))
+                    / 0.03
+                        ) 70%,
+                        transparent 100%
+                ),
+                linear-gradient(
+                        to bottom,
+                        hsl(
+                                var(--theme-h)
+                                var(--theme-s)
+                                96%
+                    / 0.025
+                        ),
+                        hsl(
+                                var(--theme-h2)
+                                calc(var(--theme-s) + var(--theme-s-delta))
+                                97%
+                    / 0.015
+                        )
+                ),
+                linear-gradient(
+                        to bottom,
+                        hsl(
+                                var(--theme-h)
+                                var(--theme-s)
+                                98%
+                    / 0.018
+                        ) 0%,
+                        transparent 100%
+                );
+    }
+}
+
 .song-view {
     min-height: calc(100vh - 2.275rem);
     display: flex;
@@ -109,6 +157,12 @@
     color: hsl(var(--theme-titles-h), 48%, 86%);
 }
 
+@media (prefers-color-scheme: light) {
+    .song-title {
+        color: hsl(var(--theme-titles-h), 48%, 14%);
+    }
+}
+
 .song-meta {
     display: flex;
     flex-direction: column;
@@ -165,6 +219,13 @@
 
 .song-lyric-text.feature {
     color: hsl(var(--theme-h), var(--theme-s), 90%);
+}
+
+@media (prefers-color-scheme: light) {
+    .feature,
+    .song-lyric-text.feature {
+        color: hsl(var(--theme-h), calc(var(--theme-s) * 0.7), 40%);
+    }
 }
 
 .song-lyric-text.scripture {

@@ -2,8 +2,9 @@ import { Link } from "react-router-dom"
 import { artists } from "../data/registry.ts"
 import type { Release } from "../types/Release.ts"
 import "../style/ReleaseView.css"
-import {getLyricBySlug} from "../utils/resolveLyricsBySlug.ts";
-import type {CSSProperties} from "react";
+import { getLyricBySlug } from "../utils/resolveLyricsBySlug.ts"
+import type { CSSProperties } from "react"
+import { useEffect, useState } from "react"
 
 const releaseImages = import.meta.glob("../img/release/*/*.{jpg,jpeg,webp}", {
     eager: true,
@@ -14,18 +15,38 @@ type ReleaseViewProps = {
     release: Release
 }
 
-function getReleaseImage(artistSlug: string, releaseSlug: string): string | undefined {
-    const candidates = [
+function getReleaseImages(
+    artistSlug: string,
+    releaseSlug: string,
+): { thumb?: string; full?: string } {
+    const thumbCandidates = [
+        `../img/release/${artistSlug}/${releaseSlug}_thumb.webp`,
+    ]
+
+    const fullCandidates = [
         `../img/release/${artistSlug}/${releaseSlug}.jpg`,
         `../img/release/${artistSlug}/${releaseSlug}.jpeg`,
         `../img/release/${artistSlug}/${releaseSlug}.webp`,
     ]
 
-    for (const candidate of candidates) {
-        if (candidate in releaseImages) return releaseImages[candidate]
+    let thumb: string | undefined
+    let full: string | undefined
+
+    for (const candidate of thumbCandidates) {
+        if (candidate in releaseImages) {
+            thumb = releaseImages[candidate]
+            break
+        }
     }
 
-    return undefined
+    for (const candidate of fullCandidates) {
+        if (candidate in releaseImages) {
+            full = releaseImages[candidate]
+            break
+        }
+    }
+
+    return { thumb, full }
 }
 
 function formatReleaseDate(date: number): string {
@@ -60,7 +81,12 @@ function formatReleaseDate(date: number): string {
 export default function ReleaseView({ release }: ReleaseViewProps) {
     const artist = artists.find((entry) => entry.slug === release.artistSlug)
     const artistName = artist?.name ?? release.artistSlug
-    const releaseImage = getReleaseImage(release.artistSlug, release.slug)
+    const { thumb: releaseThumbImage, full: releaseFullImage } = getReleaseImages(
+        release.artistSlug,
+        release.slug,
+    )
+
+    const [artOpen, setArtOpen] = useState(false)
 
     const theme = release.theme ?? null
 
@@ -73,18 +99,64 @@ export default function ReleaseView({ release }: ReleaseViewProps) {
         "--theme-titles-h": String(theme?.titlesHue ?? theme?.falloffHue ?? theme?.Hue ?? 0),
     } as CSSProperties
 
+    useEffect(() => {
+        if (!artOpen) return
+
+        const previousOverflow = document.body.style.overflow
+        document.body.style.overflow = "hidden"
+
+        window.history.pushState({ releaseArtOpen: true }, "")
+
+        const handleKeyDown = (event: KeyboardEvent) => {
+            if (event.key === "Escape") {
+                window.history.back()
+            }
+        }
+
+        const handlePopState = () => {
+            setArtOpen(false)
+        }
+
+        window.addEventListener("keydown", handleKeyDown)
+        window.addEventListener("popstate", handlePopState)
+
+        return () => {
+            document.body.style.overflow = previousOverflow
+            window.removeEventListener("keydown", handleKeyDown)
+            window.removeEventListener("popstate", handlePopState)
+        }
+    }, [artOpen])
+
+    function openArt() {
+        if (!releaseFullImage) return
+        setArtOpen(true)
+    }
+
+    function closeArt() {
+        if (artOpen) {
+            window.history.back()
+        }
+    }
+
     return (
         <div className="release-page" style={releaseThemeStyle}>
             <div className="site-column release-head">
-                {releaseImage && (
-                    <div className="release-art-frame">
-                        <img
-                            className="release-art"
-                            src={releaseImage}
-                            alt={`${release.title} album art`}
-                            draggable={false}
-                        />
-                    </div>
+                {releaseFullImage && (
+                    <button
+                        type="button"
+                        className="release-art-button"
+                        onClick={openArt}
+                        aria-label={`Open ${release.title} album art`}
+                    >
+                        <div className="release-art-frame">
+                            <img
+                                className="release-art"
+                                src={releaseThumbImage ?? releaseFullImage}
+                                alt={`${release.title} album art`}
+                                draggable={false}
+                            />
+                        </div>
+                    </button>
                 )}
 
                 <h1 className="release-title">{release.title}</h1>
@@ -171,6 +243,35 @@ export default function ReleaseView({ release }: ReleaseViewProps) {
                 </div>
             )}
 
+            {artOpen && releaseFullImage && (
+                <div
+                    className="release-art-modal"
+                    role="dialog"
+                    aria-modal="true"
+                    aria-label={`${release.title} album art`}
+                    onClick={closeArt}
+                >
+                    <button
+                        type="button"
+                        className="release-art-modal-close"
+                        onClick={(event) => {
+                            event.stopPropagation()
+                            closeArt()
+                        }}
+                        aria-label="Close album art"
+                    >
+                        ×
+                    </button>
+
+                    <img
+                        className="release-art-modal-image"
+                        src={releaseFullImage}
+                        alt={`${release.title} album art`}
+                        draggable={false}
+                        onClick={(event) => event.stopPropagation()}
+                    />
+                </div>
+            )}
         </div>
     )
 }
