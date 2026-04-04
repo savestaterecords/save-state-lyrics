@@ -1,0 +1,129 @@
+.translate-toggle {
+    position: fixed;
+    right: max(16px, env(safe-area-inset-right));
+    bottom: max(16px, env(safe-area-inset-bottom));
+    z-index: 1100;
+
+    width: 42px;
+    height: 42px;
+    padding: 0;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid hsl(0 0% 100% / 0.32);
+    border-radius: 999px;
+    background: hsl(0 0% 100% / 0.045);
+
+    backdrop-filter: blur(14px) saturate(135%);
+    -webkit-backdrop-filter: blur(14px) saturate(135%);
+
+    box-shadow:
+            0 0 0 0.5px hsl(0 0% 100% / 0.08) inset,
+            0 6px 18px hsl(0 0% 0% / 0.18);
+
+    color: hsl(0 0% 96% / 0.94);
+    cursor: pointer;
+
+    user-select: none;
+    -webkit-user-drag: none;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+
+    transition:
+            background-color 140ms ease,
+            border-color 140ms ease,
+            color 140ms ease,
+            box-shadow 140ms ease,
+            transform 140ms ease;
+}
+
+.translate-toggle:hover {
+    background: hsl(0 0% 100% / 0.07);
+    border-color: hsl(0 0% 100% / 0.42);
+    box-shadow:
+            0 0 0 0.5px hsl(0 0% 100% / 0.1) inset,
+            0 8px 22px hsl(0 0% 0% / 0.22);
+}
+
+.translate-toggle:active {
+    transform: scale(0.97);
+}
+
+.translate-toggle:focus-visible {
+    outline: none;
+    border-color: hsl(0 0% 100% / 0.52);
+    box-shadow:
+            0 0 0 0.5px hsl(0 0% 100% / 0.12) inset,
+            0 0 0 3px hsl(0 0% 100% / 0.08),
+            0 8px 22px hsl(0 0% 0% / 0.22);
+}
+
+.translate-toggle.is-active {
+    background: hsl(0 0% 100% / 0.085);
+    border-color: hsl(0 0% 100% / 0.5);
+    color: hsl(0 0% 100% / 0.98);
+}
+
+.translate-toggle-icon {
+    width: 18px;
+    height: 18px;
+    display: block;
+    flex: 0 0 auto;
+}
+
+.translate-toggle-label {
+    display: none;
+}
+
+@media (prefers-color-scheme: light) {
+    .translate-toggle {
+        border-color: hsl(0 0% 0% / 0.18);
+        background: hsl(0 0% 100% / 0.34);
+
+        box-shadow:
+                0 0 0 0.5px hsl(0 0% 100% / 0.18) inset,
+                0 6px 18px hsl(0 0% 0% / 0.08);
+
+        color: hsl(0 0% 10% / 0.86);
+    }
+
+    .translate-toggle:hover {
+        background: hsl(0 0% 100% / 0.46);
+        border-color: hsl(0 0% 0% / 0.24);
+        box-shadow:
+                0 0 0 0.5px hsl(0 0% 100% / 0.22) inset,
+                0 8px 22px hsl(0 0% 0% / 0.1);
+    }
+
+    .translate-toggle:focus-visible {
+        border-color: hsl(0 0% 0% / 0.28);
+        box-shadow:
+                0 0 0 0.5px hsl(0 0% 100% / 0.22) inset,
+                0 0 0 3px hsl(0 0% 0% / 0.06),
+                0 8px 22px hsl(0 0% 0% / 0.1);
+    }
+
+    .translate-toggle.is-active {
+        background: hsl(0 0% 100% / 0.5);
+        border-color: hsl(0 0% 0% / 0.26);
+        color: hsl(0 0% 4% / 0.94);
+    }
+}
+
+.translate-toggle-mark {
+    font-family: var(--font-sans), sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    opacity: 0.5;
+    color: currentColor;
+    margin-right: -1px;
+}
+
+.translate-toggle-slash {
+    margin-left: 1px;
+    opacity: 0.7;
+}

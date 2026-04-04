@@ -6,19 +6,19 @@ export default function ReleaseRoute() {
     const { artistSlug, releaseSlug } = useParams()
 
     if (!artistSlug || !releaseSlug) {
-        return <div className="site-column">Release not found</div>
+        return <div className="site-column">Nothing added yet. Tell Rain to work harder.</div>
     }
 
     const artist = getArtistBySlug(artistSlug)
 
     if (!artist) {
-        return <div className="site-column">Artist not found</div>
+        return <div className="site-column">Nothing added yet. Tell Rain to work harder.</div>
     }
 
     const release = artist.releases.find((entry) => entry.slug === releaseSlug)
 
     if (!release) {
-        return <div className="site-column">Release not found</div>
+        return <div className="site-column">Nothing added yet. Tell Rain to work harder.</div>
     }
 
     return <ReleaseView release={release} />

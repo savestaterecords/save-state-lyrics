@@ -4,7 +4,10 @@ const sveteTikhiy: Lyric = {
     slug: "svete-tikhiy",
 
     head: {
-        title: "Свете Тихий",
+        title: {
+            original: "Свете Тихий",
+            english: "Oh Gentle Light"
+        },
         composer: ["Dan"],
         lyricist: [],
         PV: "",

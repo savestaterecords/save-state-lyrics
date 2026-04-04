@@ -4,7 +4,10 @@ const ceobhran: Lyric = {
     slug: "ceobhran",
 
     head: {
-        title: "Ceobhrán",
+        title: {
+            original: "Ceobhrán",
+            english: "Little Mist",
+        },
         composer: ["Dan"],
         lyricist: ["Dan"],
         PV: "youtu.be/4SuXcPpa7G4",

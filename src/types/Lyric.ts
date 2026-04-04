@@ -1,23 +1,30 @@
+export type TranslatableText =
+    | string
+    | {
+    original: string
+    english?: string
+}
+
 export type LyricBlock =
     | {
     type: "lyrics"
-    text: string
+    text: TranslatableText
 }
     | {
     type: "scripture"
-    text: string
+    text: TranslatableText
 }
     | {
     type: "feature"
     artist: string
-    text: string
+    text: TranslatableText
 }
 
 export type Lyric = {
     slug: string
 
     head: {
-        title: string
+        title: TranslatableText
         composer: string[]
         lyricist: string[]
         PV: string | null
@@ -25,13 +32,13 @@ export type Lyric = {
 
     body:
         | {
-        lyrics: string
-        footnotes?: string
-        credits?: string
+        lyrics: TranslatableText
+        footnotes?: TranslatableText
+        credits?: TranslatableText
     }
         | {
         blocks: LyricBlock[]
-        footnotes?: string
-        credits?: string
+        footnotes?: TranslatableText
+        credits?: TranslatableText
     }
 }

@@ -3,8 +3,10 @@ import { artists } from "../data/registry.ts"
 import type { Release } from "../types/Release.ts"
 import "../style/ReleaseView.css"
 import { getLyricBySlug } from "../utils/resolveLyricsBySlug.ts"
+import { useTranslation } from "../context/TranslationContext.tsx"
 import type { CSSProperties } from "react"
 import { useEffect, useState } from "react"
+import {pickText} from "../utils/pickText.tsx";
 
 const releaseImages = import.meta.glob("../img/release/*/*.{jpg,jpeg,webp}", {
     eager: true,
@@ -79,8 +81,12 @@ function formatReleaseDate(date: number): string {
 }
 
 export default function ReleaseView({ release }: ReleaseViewProps) {
+    const { showTranslation } = useTranslation()
+
     const artist = artists.find((entry) => entry.slug === release.artistSlug)
     const artistName = artist?.name ?? release.artistSlug
+    const releaseTitle = pickText(release.title, showTranslation)
+
     const { thumb: releaseThumbImage, full: releaseFullImage } = getReleaseImages(
         release.artistSlug,
         release.slug,
@@ -146,27 +152,27 @@ export default function ReleaseView({ release }: ReleaseViewProps) {
                         type="button"
                         className="release-art-button"
                         onClick={openArt}
-                        aria-label={`Open ${release.title} album art`}
+                        aria-label={`Open ${releaseTitle} album art`}
                     >
                         <div className="release-art-frame">
                             <img
                                 className="release-art"
                                 src={releaseThumbImage ?? releaseFullImage}
-                                alt={`${release.title} album art`}
+                                alt={`${releaseTitle} album art`}
                                 draggable={false}
                             />
                         </div>
                     </button>
                 )}
 
-                <h1 className="release-title">{release.title}</h1>
+                <h1 className="release-title">{releaseTitle}</h1>
 
                 <p className="release-meta">
                     <Link
                         to={`/${release.artistSlug}/`}
                         className="release-artist-link"
                     >
-                        {artistName}
+                        {pickText(artistName, showTranslation)}
                     </Link>
                     <span className="release-meta-separator"> ・ </span>
                     <span>{formatReleaseDate(release.releaseDate)}</span>
@@ -180,7 +186,7 @@ export default function ReleaseView({ release }: ReleaseViewProps) {
                     if (!lyric) {
                         return (
                             <section key={track.slug} className="release-lyric-block missing">
-                                <h2>{track.title}</h2>
+                                <h2>{pickText(track.title, showTranslation)}</h2>
                                 <p>Missing lyric</p>
                             </section>
                         )
@@ -197,7 +203,7 @@ export default function ReleaseView({ release }: ReleaseViewProps) {
                                     to={`/${release.artistSlug}/${release.slug}/${track.slug}/`}
                                     className="release-lyric-title-link"
                                 >
-                                    {lyric.head.title}
+                                    {pickText(lyric.head.title, showTranslation)}
                                 </Link>
                             </h2>
 
@@ -206,7 +212,7 @@ export default function ReleaseView({ release }: ReleaseViewProps) {
                                     if (block.type === "scripture") {
                                         return (
                                             <p key={index} className="release-lyric-text scripture">
-                                                {block.text}
+                                                {pickText(block.text, showTranslation)}
                                             </p>
                                         )
                                     }
@@ -214,20 +220,20 @@ export default function ReleaseView({ release }: ReleaseViewProps) {
                                     if (block.type === "feature") {
                                         return (
                                             <p key={index} className="release-lyric-text feature">
-                                                {block.text}
+                                                {pickText(block.text, showTranslation)}
                                             </p>
                                         )
                                     }
 
                                     return (
                                         <p key={index} className="release-lyric-text">
-                                            {block.text}
+                                            {pickText(block.text, showTranslation)}
                                         </p>
                                     )
                                 })
                             ) : (
                                 <p className="release-lyric-text">
-                                    {lyric.body.lyrics}
+                                    {pickText(lyric.body.lyrics, showTranslation)}
                                 </p>
                             )}
                         </section>
@@ -238,7 +244,7 @@ export default function ReleaseView({ release }: ReleaseViewProps) {
             {release.credits && (
                 <div className="site-column release-foot">
                     <p className="release-credits">
-                        {release.credits}
+                        {pickText(release.credits, showTranslation)}
                     </p>
                 </div>
             )}
@@ -248,7 +254,7 @@ export default function ReleaseView({ release }: ReleaseViewProps) {
                     className="release-art-modal"
                     role="dialog"
                     aria-modal="true"
-                    aria-label={`${release.title} album art`}
+                    aria-label={`${releaseTitle} album art`}
                     onClick={closeArt}
                 >
                     <button
@@ -266,7 +272,7 @@ export default function ReleaseView({ release }: ReleaseViewProps) {
                     <img
                         className="release-art-modal-image"
                         src={releaseFullImage}
-                        alt={`${release.title} album art`}
+                        alt={`${releaseTitle} album art`}
                         draggable={false}
                         onClick={(event) => event.stopPropagation()}
                     />

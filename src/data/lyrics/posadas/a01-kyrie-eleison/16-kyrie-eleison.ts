@@ -4,7 +4,10 @@ const kyrieEleison: Lyric = {
     slug: "kyrie-eleison",
 
     head: {
-        title: "Κύριε Ελέησον",
+        title: {
+            original: "Κύριε Ελέησον",
+            english: "Lᴏʀᴅ, Have Mercy"
+        },
         composer: ["Rain"],
         lyricist: [],
         PV: "",

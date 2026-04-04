@@ -4,7 +4,10 @@ const gracia: Lyric = {
     slug: "gracia",
 
     head: {
-        title: "Gracia",
+        title: {
+            original: "Gracia",
+            english: "Grace",
+        },
         composer: ["Dan"],
         lyricist: ["Dan", "Gabriela"],
         PV: "youtu.be/faPgRwUCH5M",
