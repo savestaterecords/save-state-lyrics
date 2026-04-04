@@ -2,6 +2,8 @@ import { Link } from "react-router-dom"
 import type { CSSProperties } from "react"
 import type { Lyric } from "../types/Lyric.ts"
 import type { Release } from "../types/Release.ts"
+import { useTranslation } from "../context/TranslationContext.tsx"
+import { pickText } from "../utils/pickText.ts"
 import "../style/SongView.css"
 
 type SongViewProps = {
@@ -10,6 +12,8 @@ type SongViewProps = {
 }
 
 export default function SongView({ lyric, release }: SongViewProps) {
+    const { showTranslation } = useTranslation()
+
     const theme = release.theme ?? null
 
     const songThemeStyle = {
@@ -31,23 +35,26 @@ export default function SongView({ lyric, release }: SongViewProps) {
     return (
         <div className="song-page" style={songThemeStyle}>
             <div className="site-column song-view">
-
                 <div className="song-meta">
-                    <h1 className="song-title">{lyric.head.title}</h1>
+                    <h1 className="song-title">
+                        {pickText(lyric.head.title, showTranslation)}
+                    </h1>
 
                     <p className="song-subtitle">
                         <Link
                             to={`/${release.artistSlug}/`}
                             className="song-artist-link"
                         >
-                            {release.artistSlug === "posadas" ? "Posadas" : release.artistSlug}
+                            {release.artistSlug === "posadas"
+                                ? "Posadas"
+                                : release.artistSlug}
                         </Link>
                         <span className="song-subtitle-separator"> - </span>
                         <Link
                             to={`/${release.artistSlug}/${release.slug}/`}
                             className="song-release-link"
                         >
-                            {release.title}
+                            {pickText(release.title, showTranslation)}
                         </Link>
                     </p>
                 </div>
@@ -58,7 +65,7 @@ export default function SongView({ lyric, release }: SongViewProps) {
                             if (block.type === "scripture") {
                                 return (
                                     <p key={index} className="song-lyric-text scripture">
-                                        {block.text}
+                                        {pickText(block.text, showTranslation)}
                                     </p>
                                 )
                             }
@@ -66,31 +73,37 @@ export default function SongView({ lyric, release }: SongViewProps) {
                             if (block.type === "feature") {
                                 return (
                                     <p key={index} className="song-lyric-text feature">
-                                        {block.text}
+                                        {pickText(block.text, showTranslation)}
                                     </p>
                                 )
                             }
 
                             return (
                                 <p key={index} className="song-lyric-text">
-                                    {block.text}
+                                    {pickText(block.text, showTranslation)}
                                 </p>
                             )
                         })
                     ) : (
-                        <p className="song-lyric-text">{lyric.body.lyrics}</p>
+                        <p className="song-lyric-text">
+                            {pickText(lyric.body.lyrics, showTranslation)}
+                        </p>
                     )}
                 </div>
 
                 {lyric.body.footnotes && (
                     <div className="song-footnotes">
-                        <p className="song-footnotes-text">{lyric.body.footnotes}</p>
+                        <p className="song-footnotes-text">
+                            {pickText(lyric.body.footnotes, showTranslation)}
+                        </p>
                     </div>
                 )}
 
                 {lyric.body.credits && (
                     <div className="song-credits">
-                        <p className="song-credits-text">{lyric.body.credits}</p>
+                        <p className="song-credits-text">
+                            {pickText(lyric.body.credits, showTranslation)}
+                        </p>
                     </div>
                 )}
 
@@ -100,7 +113,7 @@ export default function SongView({ lyric, release }: SongViewProps) {
                             to={`/${release.artistSlug}/${release.slug}/${previousTrack.slug}/`}
                             className="song-nav-link song-nav-prev"
                         >
-                            ← {previousTrack.title}
+                            ← {pickText(previousTrack.title, showTranslation)}
                         </Link>
                     ) : (
                         <span className="song-nav-spacer" />
@@ -111,7 +124,7 @@ export default function SongView({ lyric, release }: SongViewProps) {
                             to={`/${release.artistSlug}/${release.slug}/${nextTrack.slug}/`}
                             className="song-nav-link song-nav-next"
                         >
-                            {nextTrack.title} →
+                            {pickText(nextTrack.title, showTranslation)} →
                         </Link>
                     ) : (
                         <span className="song-nav-spacer" />
