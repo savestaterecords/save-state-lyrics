@@ -3,7 +3,7 @@ import type { CSSProperties } from "react"
 import type { Lyric } from "../types/Lyric.ts"
 import type { Release } from "../types/Release.ts"
 import { useTranslation } from "../context/TranslationContext.tsx"
-import { pickText } from "../utils/pickText.ts"
+import { pickText } from "../utils/pickText.tsx"
 import "../style/SongView.css"
 
 type SongViewProps = {
