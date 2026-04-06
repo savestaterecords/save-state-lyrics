@@ -5,9 +5,12 @@ const homecoming: Lyric = {
 
     head: {
         title: "Homecoming",
-        composer: ["Dan"],
-        lyricist: ["Annabel McGill"],
         PV: "youtu.be/ir9FU-ZKVok",
+        composition: {
+            lyrics: "Annabel McGill",
+            music: "Dan",
+            production: "Rain",
+        },
     },
 
     body: {
@@ -61,15 +64,12 @@ const homecoming: Lyric = {
             }
         ],
         credits: `
-        lyrics and vocals by Annabel McGill
-        music by Dan · production by Rain
-        directed by Navalabs
-        
+        vocals by Annabel McGill
+        directed and filmed by Alejandro Navarro @navalabs_official
         as the woman in red, Maya Hernandez @mayita.x
         as the woman in blue, Tea @mai.melancholia
         makeup by Rrin @ur.obsessive.wifey
-        videography by Nav @navalabs_official
-        BTS photo and video by Mario Lopez @antariiiio
+        bts photo and video by Mario Lopez @antariiiio
         `,
     },
 }

@@ -5,9 +5,12 @@ const sinai: Lyric = {
 
     head: {
         title: "Sinai",
-        composer: ["Dan", "Rain"],
-        lyricist: ["Dan"],
         PV: "youtu.be/tAAnItDkPd4",
+        composition: {
+            lyrics: "Dan",
+            music: ["Dan", "Rain"],
+            production: "Rain",
+        },
     },
 
     body: {
@@ -48,13 +51,11 @@ const sinai: Lyric = {
         everything I fear, under red lights
         `,
         credits: `
-        lyrics by Dan · music by Dan & Rain · production by Rain
         directed by Lorena & Gabriela
-
         performance videography by 9thcircle @9nthcrcle
         narrative videography by gabriela @g3mstone
         artist photography by lorena @mortuaeintus
-        `,
+        `
     },
 }
 

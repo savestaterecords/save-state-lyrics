@@ -25,6 +25,7 @@ Sangria
 const kyrieEleison: Release = {
     slug: "kyrie-eleison",
     title: "KYRIE ELEISON",
+    artist: "Posadas",
     artistSlug: "posadas",
     type: "album",
     releaseDate: 231031,
@@ -57,11 +58,11 @@ const kyrieEleison: Release = {
     Isabella
     Katy
     
-    Character Portrayal by:
+    character portrayal by:
     Tea @mai.melancholia
     Maya Hernandez @mayita.x
     
-    Makeup by:
+    makeup by:
     Rrin @ur.obsessive.wifey
     
     mastering of KYRIE ELEISON by Rain

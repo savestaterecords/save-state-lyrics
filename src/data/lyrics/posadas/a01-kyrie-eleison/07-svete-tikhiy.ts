@@ -8,9 +8,11 @@ const sveteTikhiy: Lyric = {
             original: "Свете Тихий",
             english: "Oh Gentle Light"
         },
-        composer: ["Dan"],
-        lyricist: [],
         PV: "",
+        composition: {
+            music: ["Dan"],
+            production: ["Dan"]
+        }
     },
 
     body: {
@@ -18,8 +20,6 @@ const sveteTikhiy: Lyric = {
         ~
         `,
         credits: `
-        music and production by Dan
-        directed by Rain
         `,
     },
 }

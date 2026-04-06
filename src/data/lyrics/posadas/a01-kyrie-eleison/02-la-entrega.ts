@@ -8,9 +8,12 @@ const laEntrega: Lyric = {
             original: "La Entrega",
             english: "The Surrender",
         },
-        composer: ["Dan"],
-        lyricist: ["Dan"],
         PV: "youtu.be/3HO45RVcnbA",
+        composition: {
+            lyrics: "Dan",
+            music: "Dan",
+            production: "Dan",
+        },
     },
 
     body: {
@@ -65,9 +68,6 @@ const laEntrega: Lyric = {
             `,
         },
         credits: `
-        lyrics, music, and production by Dan
-        directed by Rain
-        
         as herself, Maivy @kimi.kosakurai
         `,
     },

@@ -8,9 +8,12 @@ const gracia: Lyric = {
             original: "Gracia",
             english: "Grace",
         },
-        composer: ["Dan"],
-        lyricist: ["Dan", "Gabriela"],
         PV: "youtu.be/faPgRwUCH5M",
+        composition: {
+            lyrics: ["Dan", "Gabriela"],
+            music: "Rain",
+            production: "Rain"
+        }
     },
 
     body: {
@@ -81,8 +84,6 @@ const gracia: Lyric = {
         
         `,
         credits: `
-        lyrics by Dan & Gabriela · music by Dan · production by Rain
-        directed by Rain
         `,
     },
 }

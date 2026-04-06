@@ -5,9 +5,12 @@ const theBodyAndBlood: Lyric = {
 
     head: {
         title: "The Body and Blood",
-        composer: ["Dan"],
-        lyricist: ["Dan"],
         PV: "youtu.be/17043i_Q0yc",
+        composition: {
+            lyrics: "Dan",
+            music: "Dan",
+            production: "Dan"
+        }
     },
 
     body: {
@@ -51,11 +54,8 @@ const theBodyAndBlood: Lyric = {
         ],
 
         credits: `
-        lyrics, music, and production by Dan
-        directed by Rain
-        
-        as herself, Maivy @kimi.kosakurai
         photography & videography by Gio @xrz_gio
+        as herself, Maivy @kimi.kosakurai
         prop support by Corrine
         `,
     },

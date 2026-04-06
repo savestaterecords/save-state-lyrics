@@ -5,9 +5,12 @@ const altars: Lyric = {
 
     head: {
         title: "Altars",
-        composer: ["Dan"],
-        lyricist: ["Dan"],
         PV: "youtu.be/c1l2g1xRdMg",
+        composition: {
+            lyrics: "Dan",
+            music: "Dan",
+            production: "Dan",
+        }
     },
 
     body: {
@@ -36,8 +39,6 @@ const altars: Lyric = {
         do you love me just enough to end me?
         `,
         credits: `
-        lyrics, music, and production by Dan
-        directed by Dan
         `,
     },
 }

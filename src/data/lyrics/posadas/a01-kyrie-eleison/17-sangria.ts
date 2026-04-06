@@ -5,9 +5,12 @@ const Sangria: Lyric = {
 
     head: {
         title: "Sangria",
-        composer: ["Dan", "IMAX"],
-        lyricist: ["Dan"],
         PV: "outu.be/sETMS7b7SI8",
+        composition: {
+            lyrics: "Dan",
+            music: ["Dan", "IMAX"],
+            production: "Rain",
+        }
     },
 
     body: {
@@ -53,13 +56,9 @@ const Sangria: Lyric = {
                 `
             }
         ],
-        credits: `
-        lyrics by Dan · music by Dan & IMAX · production by Rain
-        directed by Dan
-        
+        credits: `     
         samples & 808s by IMAX @imaxbeats
         chorus vocals by Lividéa
-        
         photography by Gabriela @g3mstone
 
         `,

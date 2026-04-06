@@ -5,9 +5,12 @@ const lucid: Lyric = {
 
     head: {
         title: "Lucid",
-        composer: ["Dan"],
-        lyricist: ["Dan", "Coraline", "Rain"],
         PV: "youtu.be/C5b7KxdkHU0",
+        composition: {
+            lyrics: ["Dan", "Coraline", "Rain"],
+            music: "Dan",
+            production: "Dan"
+        }
     },
 
     body: {
@@ -58,9 +61,7 @@ const lucid: Lyric = {
 
         `,
         credits: `
-        lyrics by Dan, Coraline, and Rain · music and production by Dan
         directed and filmed by Taylor Bagley
-        
         as the woman in the blue dress, Maivy @kimi.kosakurai
         as the man with the mask, Day$tar @lorddaystarshandala
         `,

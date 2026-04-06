@@ -5,17 +5,19 @@ const Revelations: Lyric = {
 
     head: {
         title: "/•**==~^,(*✞*),^~==**•\\",
-        composer: [],
-        lyricist: [],
         PV: "",
+        composition: {
+        }
     },
 
     body: {
         lyrics: `
         `,
         credits: `
-        ~
         `,
+        footnotes: `
+        the mass is ended, go in peace
+        `
     },
 }
 

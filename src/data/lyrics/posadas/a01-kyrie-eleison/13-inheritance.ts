@@ -5,9 +5,12 @@ const inheritance: Lyric = {
 
     head: {
         title: "Inheritance",
-        composer: ["Rain"],
-        lyricist: ["Rain"],
         PV: "youtu.be/7Pr_otbaayE",
+        composition: {
+            lyrics: "Rain",
+            music: "Rain",
+            production: "Rain",
+        }
     },
 
     body: {
@@ -59,10 +62,7 @@ const inheritance: Lyric = {
             and yet, there, was i
             `,
         },
-        credits: `
-        lyrics, music, and production by Rain
-        directed by Rain
-        
+        credits: `      
         photography by Vivien @idyll.vial
         videography by:
         Alex Howley

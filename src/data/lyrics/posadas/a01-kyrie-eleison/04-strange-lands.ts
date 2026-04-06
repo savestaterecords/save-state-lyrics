@@ -5,9 +5,12 @@ const strangeLands: Lyric = {
 
     head: {
         title: "Strange Lands",
-        composer: ["Dan"],
-        lyricist: ["Dan", "Day$tar"],
         PV: "youtu.be/sWb508W4838",
+        composition: {
+            lyrics: ["Dan", "Day$tar"],
+            music: "Dan",
+            production: "Dan",
+        },
     },
 
     body: {
@@ -78,9 +81,7 @@ const strangeLands: Lyric = {
             },
         ],
         credits: `
-        lyrics by Dan & Day$tar · music and production by Dan
         directed and filmed by Taylor Bagley
-        
         featuring Day$tar @lorddaystarshandala
         `,
     },

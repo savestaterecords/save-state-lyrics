@@ -8,9 +8,12 @@ const aguaViva: Lyric = {
             original: "Agua Viva",
             english: "Living Water",
         },
-        composer: ["Rain"],
-        lyricist: ["Dan"],
         PV: "youtu.be/LkYrFF_pEV8",
+        composition: {
+            lyrics: "Dan",
+            music: "Rain",
+            production: "Rain",
+        }
     },
 
     body: {
@@ -25,7 +28,7 @@ const aguaViva: Lyric = {
             
             yo voy desandando hasta que por fin
             yo me remendaba
-            yo me lo quit​​é
+            yo me lo quité
             con la agua viva
             yo me remendé
             perdido en entornos amantes
@@ -61,8 +64,6 @@ const aguaViva: Lyric = {
             `,
         },
         credits: `
-        lyrics by Dan · music and production by Rain
-        directed by Rain
         `,
     },
 }

@@ -2,7 +2,7 @@ import { useTranslation } from "../context/TranslationContext.tsx"
 import "../style/TranslateToggle.css"
 
 export default function TranslateToggle() {
-    const { toggleTranslation } = useTranslation()
+    const { showTranslation, toggleTranslation } = useTranslation()
 
     function handleClick() {
         toggleTranslation()
@@ -11,14 +11,15 @@ export default function TranslateToggle() {
     return (
         <button
             type="button"
-            className="translate-toggle"
+            className={`translate-toggle ${showTranslation ? "is-active" : ""}`}
             onClick={handleClick}
             title="Toggle translation (T)"
             aria-label="Toggle translation"
+            aria-pressed={showTranslation}
         >
-        <span className="translate-toggle-mark" aria-hidden="true">
-            文<span className="translate-toggle-slash">/A</span>
-        </span>
+            <span className="translate-toggle-mark" aria-hidden="true">
+                文<span className="translate-toggle-slash">/A</span>
+            </span>
         </button>
     )
 }

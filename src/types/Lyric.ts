@@ -1,3 +1,5 @@
+import type { Composition } from "./Credit.ts"
+
 export type TranslatableText =
     | string
     | {
@@ -25,9 +27,8 @@ export type Lyric = {
 
     head: {
         title: TranslatableText
-        composer: string[]
-        lyricist: string[]
         PV: string | null
+        composition: Composition
     }
 
     body:

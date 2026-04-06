@@ -93,7 +93,6 @@ export default function ReleaseView({ release }: ReleaseViewProps) {
     )
 
     const [artOpen, setArtOpen] = useState(false)
-
     const theme = release.theme ?? null
 
     const releaseThemeStyle = {

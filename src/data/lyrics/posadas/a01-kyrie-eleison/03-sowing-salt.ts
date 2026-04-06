@@ -5,9 +5,12 @@ const sowingSalt: Lyric = {
 
     head: {
         title: "Sowing Salt",
-        composer: ["Rain"],
-        lyricist: ["Dan"],
         PV: "youtu.be/jB4bD7Ax9Dw",
+        composition: {
+            lyrics: "Dan",
+            music: "Rain",
+            production: "Rain",
+        },
     },
 
     body: {
@@ -41,11 +44,7 @@ const sowingSalt: Lyric = {
         cutting you open - a sight to behold
         `,
         credits: `
-        lyrics by Dan · music and production by Rain
-        directed by Rain
-        
         videography by Gio @xrz_gio
-
         `,
     },
 }

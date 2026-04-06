@@ -1,7 +1,9 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate, useParams } from "react-router-dom"
 import type { CSSProperties } from "react"
 import type { Lyric } from "../types/Lyric.ts"
 import type { Release } from "../types/Release.ts"
+import type { CreditPeople } from "../types/Credit.ts"
+import { useEffect, useRef } from "react"
 import { useTranslation } from "../context/TranslationContext.tsx"
 import { pickText } from "../utils/pickText.tsx"
 import "../style/SongView.css"
@@ -11,8 +13,15 @@ type SongViewProps = {
     release: Release
 }
 
+function formatPeople(people: CreditPeople): string {
+    return Array.isArray(people) ? people.join(", ") : people
+}
+
 export default function SongView({ lyric, release }: SongViewProps) {
     const { showTranslation } = useTranslation()
+    const navigate = useNavigate()
+    const { trackSlug } = useParams()
+    const songPageRef = useRef<HTMLDivElement | null>(null)
 
     const theme = release.theme ?? null
 
@@ -25,15 +34,104 @@ export default function SongView({ lyric, release }: SongViewProps) {
         "--theme-titles-h": String(theme?.titlesHue ?? theme?.falloffHue ?? theme?.Hue ?? 0),
     } as CSSProperties
 
-    const trackIndex = release.tracklist.findIndex((track) => track.slug === lyric.slug)
-    const previousTrack = trackIndex > 0 ? release.tracklist[trackIndex - 1] : null
-    const nextTrack =
-        trackIndex >= 0 && trackIndex < release.tracklist.length - 1
-            ? release.tracklist[trackIndex + 1]
-            : null
+    function goToAdjacentTrack(direction: "previous" | "next") {
+        if (!trackSlug) return
+
+        const trackIndex = release.tracklist.findIndex(
+            (track) => track.slug === trackSlug
+        )
+
+        if (trackIndex === -1) return
+
+        const targetIndex =
+            direction === "previous"
+                ? (trackIndex - 1 + release.tracklist.length) % release.tracklist.length
+                : (trackIndex + 1) % release.tracklist.length
+
+        const targetTrack = release.tracklist[targetIndex]
+
+        navigate(`/${release.artistSlug}/${release.slug}/${targetTrack.slug}/`)
+    }
+
+    useEffect(() => {
+        function handleKeyDown(event: KeyboardEvent) {
+            if (event.key === "ArrowLeft") {
+                goToAdjacentTrack("previous")
+            }
+
+            if (event.key === "ArrowRight") {
+                goToAdjacentTrack("next")
+            }
+        }
+
+        window.addEventListener("keydown", handleKeyDown)
+        return () => window.removeEventListener("keydown", handleKeyDown)
+    }, [trackSlug, release.tracklist, release.artistSlug, release.slug, navigate])
+
+    useEffect(() => {
+        const element = songPageRef.current
+        if (!element) return
+
+        let startX = 0
+        let startY = 0
+
+        function handleTouchStart(event: TouchEvent) {
+            const touch = event.changedTouches[0]
+            startX = touch.clientX
+            startY = touch.clientY
+        }
+
+        function handleTouchEnd(event: TouchEvent) {
+            const touch = event.changedTouches[0]
+            const deltaX = touch.clientX - startX
+            const deltaY = touch.clientY - startY
+
+            const horizontalThreshold = 60
+
+            if (Math.abs(deltaX) < horizontalThreshold) return
+            if (Math.abs(deltaX) <= Math.abs(deltaY)) return
+
+            if (deltaX > 0) {
+                goToAdjacentTrack("previous")
+            } else {
+                goToAdjacentTrack("next")
+            }
+        }
+
+        element.addEventListener("touchstart", handleTouchStart, { passive: true })
+        element.addEventListener("touchend", handleTouchEnd, { passive: true })
+
+        return () => {
+            element.removeEventListener("touchstart", handleTouchStart)
+            element.removeEventListener("touchend", handleTouchEnd)
+        }
+    }, [trackSlug, release.tracklist, release.artistSlug, release.slug, navigate])
+
+    const compositionParts: Array<{ label: string; value: CreditPeople }> = []
+
+    if (lyric.head.composition.lyrics) {
+        compositionParts.push({
+            label: "Lyrics",
+            value: lyric.head.composition.lyrics,
+        })
+    }
+
+    if (lyric.head.composition.music) {
+        compositionParts.push({
+            label: "Music",
+            value: lyric.head.composition.music,
+        })
+    }
+
+    if (lyric.head.composition.production) {
+        compositionParts.push({
+            label: "Production",
+            value: lyric.head.composition.production,
+        })
+    }
 
     return (
-        <div className="song-page" style={songThemeStyle}>
+        <div ref={songPageRef} className="song-page" style={songThemeStyle}>
             <div className="site-column song-view">
                 <div className="song-meta">
                     <h1 className="song-title">
@@ -45,9 +143,7 @@ export default function SongView({ lyric, release }: SongViewProps) {
                             to={`/${release.artistSlug}/`}
                             className="song-artist-link"
                         >
-                            {release.artistSlug === "posadas"
-                                ? "Posadas"
-                                : release.artistSlug}
+                            {release.artist}
                         </Link>
                         <span className="song-subtitle-separator"> - </span>
                         <Link
@@ -57,6 +153,24 @@ export default function SongView({ lyric, release }: SongViewProps) {
                             {pickText(release.title, showTranslation)}
                         </Link>
                     </p>
+
+                    {compositionParts.length > 0 && (
+                        <p className="song-composition">
+                            {compositionParts.map((part, index) => (
+                                <span key={part.label}>
+                                    <span className="song-composition-label">
+                                        {part.label}:
+                                    </span>{" "}
+                                    <span className="song-composition-value">
+                                        {formatPeople(part.value)}
+                                    </span>
+                                    {index < compositionParts.length - 1 && (
+                                        <span className="song-composition-separator"> ・ </span>
+                                    )}
+                                </span>
+                            ))}
+                        </p>
+                    )}
                 </div>
 
                 <div className="song-body">
@@ -106,30 +220,6 @@ export default function SongView({ lyric, release }: SongViewProps) {
                         </p>
                     </div>
                 )}
-
-                <div className="song-nav">
-                    {previousTrack ? (
-                        <Link
-                            to={`/${release.artistSlug}/${release.slug}/${previousTrack.slug}/`}
-                            className="song-nav-link song-nav-prev"
-                        >
-                            ← {pickText(previousTrack.title, showTranslation)}
-                        </Link>
-                    ) : (
-                        <span className="song-nav-spacer" />
-                    )}
-
-                    {nextTrack ? (
-                        <Link
-                            to={`/${release.artistSlug}/${release.slug}/${nextTrack.slug}/`}
-                            className="song-nav-link song-nav-next"
-                        >
-                            {pickText(nextTrack.title, showTranslation)} →
-                        </Link>
-                    ) : (
-                        <span className="song-nav-spacer" />
-                    )}
-                </div>
             </div>
         </div>
     )

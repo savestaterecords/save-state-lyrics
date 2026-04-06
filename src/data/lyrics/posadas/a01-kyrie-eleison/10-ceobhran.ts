@@ -8,9 +8,12 @@ const ceobhran: Lyric = {
             original: "Ceobhrán",
             english: "Little Mist",
         },
-        composer: ["Dan"],
-        lyricist: ["Dan"],
         PV: "youtu.be/4SuXcPpa7G4",
+        composition: {
+            lyrics: "Dan",
+            music: "Dan",
+            production: "Dan",
+        }
     },
 
     body: {
@@ -40,8 +43,6 @@ const ceobhran: Lyric = {
         ],
 
         credits: `
-        lyrics, music, and production by Dan
-        directed by Dan
         `,
     },
 }

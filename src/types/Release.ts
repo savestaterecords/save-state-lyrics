@@ -10,6 +10,7 @@ export type ReleaseType =
 export type Release = {
     slug: string
     title: string
+    artist: string
     artistSlug: string
     type: ReleaseType
     releaseDate: number

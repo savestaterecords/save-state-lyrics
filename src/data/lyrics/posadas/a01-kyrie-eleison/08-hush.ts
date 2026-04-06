@@ -5,9 +5,12 @@ const hush: Lyric = {
 
     head: {
         title: "Hush",
-        composer: ["Dan"],
-        lyricist: ["Rain"],
         PV: "youtu.be/ZLK5u2HR7ww",
+        composition: {
+            lyrics: "Dan",
+            music: "Rain",
+            production: "Rain",
+        }
     },
 
     body: {
@@ -34,7 +37,6 @@ const hush: Lyric = {
         feeling free when they’re burning me
         `,
         credits: `
-        lyrics by Dan · music by Dan and Rain · production by Rain
         directed and filmed by Taylor Bagley
         `,
     },

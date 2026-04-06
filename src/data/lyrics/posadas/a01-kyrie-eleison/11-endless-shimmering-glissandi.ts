@@ -5,9 +5,12 @@ const endlessShimmeringGlissandi: Lyric = {
 
     head: {
         title: "Endless Shimmering Glissandi",
-        composer: ["Rain", "Quakemaker"],
-        lyricist: ["Rain"],
         PV: "youtu.be/4SuXcPpa7G4",
+        composition: {
+            lyrics: "Rain",
+            music: ["Rain", "Quakemaker"],
+            production: "Rain",
+        }
     },
 
     body: {
@@ -48,10 +51,8 @@ const endlessShimmeringGlissandi: Lyric = {
         in endless shimmering glissandi
         `,
         credits: `
-        lyrics, music, and production by Rain
-        guitars, bass, and drums by Quakemaker @im.quakemaker
-        directed by Rain
-          
+        guitars, bass, and drums by Quakemaker @im.quakemaker          
+        
         videography by:
         Maivy @kimi.kosakurai
         Day$tar @lorddaystarshandala

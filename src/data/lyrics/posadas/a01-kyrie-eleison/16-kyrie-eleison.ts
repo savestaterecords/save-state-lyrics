@@ -8,9 +8,11 @@ const kyrieEleison: Lyric = {
             original: "Κύριε Ελέησον",
             english: "Lᴏʀᴅ, Have Mercy"
         },
-        composer: ["Rain"],
-        lyricist: [],
         PV: "",
+        composition: {
+            music: ["Rain"],
+            production: ["Rain"]
+        }
     },
 
     body: {
@@ -18,8 +20,6 @@ const kyrieEleison: Lyric = {
         ~
         `,
         credits: `
-        music and production by Rain
-        directed by Rain
         `,
     },
 }
