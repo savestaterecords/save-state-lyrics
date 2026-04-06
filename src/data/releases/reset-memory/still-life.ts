@@ -34,6 +34,7 @@ const stillLife: Release = {
     additional guitars by Daun @daun.music
     spoken word by Eunbi Hina @eunbi.hina
     erhu by Jazreel Luar @jazluar
+    keys by Ria @the.rianess
     blast beats by Kane @thebutcherkane
     
     videography by:
