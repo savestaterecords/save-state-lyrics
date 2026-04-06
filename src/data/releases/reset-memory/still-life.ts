@@ -21,12 +21,36 @@ countless funerals for spring
 const stillLife: Release = {
     slug: "still-life",
     title: "still life",
-    artistSlug: "resetmemory",
+    artist: "reset memory",
+    artistSlug: "reset-memory",
     type: "album",
     releaseDate: 230707,
     tracklist: parseTrackList(titlesSource),
     credits: `
-    ~
+    reset memory is:
+    vocals: rain @rsm_rain
+    guitars: june @forte174
+    
+    additional guitars by Daun @daun.music
+    spoken word by Eunbi Hina @eunbi.hina
+    erhu by Jazreel Luar @jazluar
+    blast beats by Kane @thebutcherkane
+    
+    videography by:
+    Tiffany Nguyễn
+    John Alvarez
+    Jose Martinez
+    
+    photography by:
+    Ashley Vũ @x_xsh
+    Vivien @idyll.vial
+    
+    hairstyle: Bobby Cantu @yuugen____
+    makeup: Dove @goddessdove.creation
+    
+    as herself: Maivy @kimi.kosakurai
+    
+    album art: Jasmine @little.lemon.house
     `,
 
     theme: {

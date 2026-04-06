@@ -5,9 +5,11 @@ const auroraBorealis: Lyric = {
 
     head: {
         title: "aurora borealis",
-        composer: ["rain", "ria"],
-        lyricist: ["rain"],
         PV: "youtu.be/PAPMtRc17Zw",
+        composition: {
+            lyrics: "Rain",
+            music: ["Rain", "Ria"],
+        }
     },
 
     body: {
@@ -23,7 +25,8 @@ const auroraBorealis: Lyric = {
         were the last words i could remember
         `,
         credits: `
-        -
+        keys by Ria @the.rianess
+        photo and video by Jose Martinez
         `,
     },
 }

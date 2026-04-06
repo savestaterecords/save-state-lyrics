@@ -5,9 +5,11 @@ const casiCielo: Lyric = {
 
     head: {
         title: "casi cielo",
-        composer: ["rain"],
-        lyricist: ["rain"],
         PV: "youtu.be/gbmmIuIO9FI",
+        composition: {
+            lyrics: "Rain",
+            music: "Rain",
+        }
     },
 
     body: {
@@ -35,7 +37,11 @@ const casiCielo: Lyric = {
         leaving me dreaming i could stay forever with you
         `,
         credits: `
-        -
+        erhu by Jazreel @jazluar
+        videography by John Alvarez
+        hairstyle by Bobby Cantu @yuugen____
+        makeup by Dove @goddessdove.creation
+        as herself: Maivy @kimi.kosakurai1
         `,
     },
 }

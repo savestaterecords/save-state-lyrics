@@ -5,9 +5,11 @@ const ifAllElseFails: Lyric = {
 
     head: {
         title: "if all else fails",
-        composer: ["rain"],
-        lyricist: ["rain"],
         PV: "youtu.be/weNyBWR0ncI",
+        composition: {
+            lyrics: "Rain",
+            music: "Rain",
+        }
     },
 
     body: {
@@ -52,7 +54,21 @@ const ifAllElseFails: Lyric = {
         why do i hurt who i love
         `,
         credits: `
-        -
+        photo and video by Jose Martinez
+        `,
+        footnotes: `
+        with a reading from Visions of the Daughters of Albion, by William Blake
+        
+        For the soft soul of America, Oothoon wanderd in woe,
+        Along the vales of Leutha seeking flowers to comfort her;
+        And thus she spoke to the bright Marygold of Leutha's vale
+        
+        Art thou a flower! Art though a nymph! I see thee now a flower;
+        Now a nymph! I dare not pluck thee from thy dewy bed!
+        
+        The Golden nymph replied; pluck thou my flower, Oothoon the mild
+        Another flower shall spring. because the soul of sweet delight
+        Can never pass away, she ceas'd & closed her golden shrine.
         `,
     },
 }

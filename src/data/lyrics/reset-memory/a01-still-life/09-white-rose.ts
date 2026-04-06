@@ -5,9 +5,11 @@ const whiteRose: Lyric = {
 
     head: {
         title: "white rose",
-        composer: ["rain"],
-        lyricist: ["rain"],
         PV: "",
+        composition: {
+            lyrics: "Rain",
+            music: "Rain",
+        }
     },
 
     body: {
@@ -34,7 +36,6 @@ const whiteRose: Lyric = {
         that i keep falling for you
         `,
         credits: `
-        -
         `,
     },
 }

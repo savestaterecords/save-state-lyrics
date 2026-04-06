@@ -5,9 +5,11 @@ const endgame: Lyric = {
 
     head: {
         title: "endgame",
-        composer: ["rain"],
-        lyricist: ["rain"],
         PV: "",
+        composition: {
+            lyrics: "Rain",
+            music: "Rain",
+        }
     },
 
     body: {
@@ -43,7 +45,7 @@ const endgame: Lyric = {
         please don’t leave me behind
         `,
         credits: `
-        -
+        guitar solo by Daun @daun.music
         `,
     },
 }

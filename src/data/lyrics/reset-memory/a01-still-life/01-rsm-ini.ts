@@ -5,9 +5,11 @@ const rsmini: Lyric = {
 
     head: {
         title: "rsm.ini",
-        composer: ["rain"],
-        lyricist: ["rain"],
         PV: "",
+        composition: {
+            lyrics: "rain",
+            music: "rain"
+        }
     },
 
     body: {
@@ -46,7 +48,6 @@ const rsmini: Lyric = {
                 letting go the love of a lifetime
                 they see you too
                 
-                
                 this is the place where sadness is laid to rest
                 this is the place where the last tears fall
                 
@@ -57,7 +58,7 @@ const rsmini: Lyric = {
             }
         ],
         credits: `
-        -
+        vocals by Eunbi Hina @eunbi.hina
         `,
     },
 }

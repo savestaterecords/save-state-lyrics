@@ -4,10 +4,15 @@ const ningenShikkaku: Lyric = {
     slug: "ningen-shikkaku",
 
     head: {
-        title: "人間失格",
-        composer: ["rain"],
-        lyricist: ["rain"],
+        title: {
+            original: "人間失格",
+            english: "unfit to be human"
+        },
         PV: "",
+        composition: {
+            lyrics: "Rain",
+            music: "Rain",
+        }
     },
 
     body: {
@@ -41,7 +46,7 @@ const ningenShikkaku: Lyric = {
         in myriad colours as the new constellations
         `,
         credits: `
-        -
+        photo and video by Tiffany Nguyễn
         `,
     },
 }

@@ -5,9 +5,11 @@ const countlessFuneralsForSpring: Lyric = {
 
     head: {
         title: "countless funerals for spring",
-        composer: ["rain"],
-        lyricist: ["rain"],
         PV: "",
+        composition: {
+            lyrics: "Rain",
+            music: "Rain",
+        }
     },
 
     body: {
@@ -48,7 +50,8 @@ const countlessFuneralsForSpring: Lyric = {
         like closing your eyes - goodbye
         `,
         credits: `
-        -
+        guitar solo by Daun @daun.music
+        blast beats by Kane @thebutcherkane
         `,
     },
 }

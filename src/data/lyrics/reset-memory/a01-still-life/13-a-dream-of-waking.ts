@@ -5,9 +5,11 @@ const aDreamOfWaking: Lyric = {
 
     head: {
         title: "a dream of waking",
-        composer: ["rain"],
-        lyricist: ["rain"],
         PV: "",
+        composition: {
+            lyrics: "Rain",
+            music: "Rain",
+        }
     },
 
     body: {
@@ -31,7 +33,6 @@ const aDreamOfWaking: Lyric = {
         obsession is a love song
         `,
         credits: `
-        -
         `,
     },
 }

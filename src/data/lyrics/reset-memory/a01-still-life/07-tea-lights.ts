@@ -5,9 +5,11 @@ const teaLights: Lyric = {
 
     head: {
         title: "tea lights",
-        composer: ["rain"],
-        lyricist: ["rain"],
         PV: "",
+        composition: {
+            lyrics: "Rain",
+            music: "Rain",
+        }
     },
 
     body: {
@@ -33,7 +35,6 @@ const teaLights: Lyric = {
         but autumn came too soon
         `,
         credits: `
-        -
         `,
     },
 }

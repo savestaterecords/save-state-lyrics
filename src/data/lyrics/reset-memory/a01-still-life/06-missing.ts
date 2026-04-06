@@ -5,9 +5,11 @@ const missing: Lyric = {
 
     head: {
         title: "missing",
-        composer: ["rain"],
-        lyricist: ["daun"],
         PV: "",
+        composition: {
+            lyrics: "Daun",
+            music: "Rain",
+        }
     },
 
     body: {
@@ -35,7 +37,9 @@ const missing: Lyric = {
         do you still miss me too?
         `,
         credits: `
-        -
+        lyrics and guitars by Daun @daun.music
+        photography by Ashley Vũ @x_xsh
+        videography by Tiffany Nguyễn
         `,
     },
 }

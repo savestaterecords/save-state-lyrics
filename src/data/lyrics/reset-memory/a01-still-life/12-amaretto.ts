@@ -5,9 +5,11 @@ const amaretto: Lyric = {
 
     head: {
         title: "amaretto",
-        composer: ["rain"],
-        lyricist: ["rain"],
         PV: "",
+        composition: {
+            lyrics: "Rain",
+            music: "Rain",
+        }
     },
 
     body: {
@@ -25,7 +27,6 @@ const amaretto: Lyric = {
         i love you
         `,
         credits: `
-        -
         `,
     },
 }

@@ -5,9 +5,11 @@ const inTheRain: Lyric = {
 
     head: {
         title: "in the rain",
-        composer: ["rain"],
-        lyricist: ["neos"],
         PV: "",
+        composition: {
+            lyrics: "Neos",
+            music: "Rain",
+        }
     },
 
     body: {
@@ -31,7 +33,7 @@ const inTheRain: Lyric = {
         i’m in a trance
         `,
         credits: `
-        -
+        lyrics by Neos
         `,
     },
 }

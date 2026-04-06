@@ -4,10 +4,15 @@ const sonzaiShoumei: Lyric = {
     slug: "sonzai-shoumei",
 
     head: {
-        title: "存在証明",
-        composer: ["rain"],
-        lyricist: ["rain"],
+        title: {
+            original: "存在証明",
+            english: "proof of my existence"
+        },
         PV: "",
+        composition: {
+            lyrics: "Rain",
+            music: "Rain",
+        }
     },
 
     body: {
@@ -48,9 +53,6 @@ const sonzaiShoumei: Lyric = {
         i know who i am
         my life is the everlasting continuance of memories
         if i know this i know i exist.
-        `,
-        credits: `
-        -
         `,
     },
 }
