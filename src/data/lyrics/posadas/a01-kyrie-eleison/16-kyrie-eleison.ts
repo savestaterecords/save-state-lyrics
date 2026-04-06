@@ -19,8 +19,6 @@ const kyrieEleison: Lyric = {
         lyrics: `
         ~
         `,
-        credits: `
-        `,
     },
 }
 
