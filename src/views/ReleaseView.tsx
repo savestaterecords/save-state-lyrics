@@ -83,7 +83,8 @@ function formatReleaseDate(date: number): string {
 export default function ReleaseView({ release }: ReleaseViewProps) {
     const { showTranslation } = useTranslation()
 
-    const artist = artists.find((entry) => entry.slug === release.artistSlug)
+    const artist = artists
+        .find((entry) => entry.slug === release.artistSlug)
     const artistName = artist?.name ?? release.artistSlug
     const releaseTitle = pickText(release.title, showTranslation)
 

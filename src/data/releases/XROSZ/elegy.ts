@@ -29,7 +29,7 @@ const elegy: Release = {
     mix: Miles Tag @dirunewssss
     master: Kyle Cramer @kairuofficial
     
-    Photography by Pandor
+    Photography: Pandor
     Videography by:
     Maivy Huynh @kimi.kosakurai
     Ramona @yourstrulyramona
