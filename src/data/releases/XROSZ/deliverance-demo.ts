@@ -39,7 +39,6 @@ const deliveranceDemo: Release = {
     Album Art: Tiago Martins
     `,
     theme: {
-
         Hue: 190,
         strength: "68%",
         falloffHue: 295,
