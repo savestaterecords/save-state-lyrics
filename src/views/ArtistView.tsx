@@ -16,6 +16,7 @@ const sectionOrder = [
     "single",
     "other",
     "track",
+    "demo",
 ] as const
 
 const sectionLabels: Record<(typeof sectionOrder)[number], string> = {
@@ -25,6 +26,7 @@ const sectionLabels: Record<(typeof sectionOrder)[number], string> = {
     single: "Singles",
     other: "Other",
     track: "Tracks",
+    demo: "Demos",
 }
 
 export default function ArtistView({ artist }: ArtistViewProps) {
