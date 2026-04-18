@@ -1,3 +1,5 @@
+import type {TranslatableText} from "./Lyric.ts";
+
 export type ReleaseType =
     | "album"
     | "mini-album"
@@ -9,7 +11,7 @@ export type ReleaseType =
 
 export type Release = {
     slug: string
-    title: string
+    title: TranslatableText
     artist: string
     artistSlug: string
     type: ReleaseType

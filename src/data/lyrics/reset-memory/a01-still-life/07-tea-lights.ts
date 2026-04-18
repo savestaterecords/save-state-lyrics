@@ -7,8 +7,8 @@ const teaLights: Lyric = {
         title: "tea lights",
         PV: "",
         composition: {
-            lyrics: "Rain",
-            music: "Rain",
+            lyrics: "rain",
+            music: "rain",
         }
     },
 

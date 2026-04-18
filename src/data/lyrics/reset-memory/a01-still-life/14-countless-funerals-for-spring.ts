@@ -7,8 +7,8 @@ const countlessFuneralsForSpring: Lyric = {
         title: "countless funerals for spring",
         PV: "",
         composition: {
-            lyrics: "Rain",
-            music: "Rain",
+            lyrics: "rain",
+            music: "rain",
         }
     },
 

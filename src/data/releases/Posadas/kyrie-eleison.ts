@@ -24,7 +24,10 @@ Sangria
 
 const kyrieEleison: Release = {
     slug: "kyrie-eleison",
-    title: "KYRIE ELEISON",
+    title: {
+        original: "KYRIE ELEISON",
+        english: "LORD HAVE MERCY"
+    },
     artist: "Posadas",
     artistSlug: "posadas",
     type: "album",

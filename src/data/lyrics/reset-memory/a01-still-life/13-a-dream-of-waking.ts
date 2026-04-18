@@ -7,8 +7,8 @@ const aDreamOfWaking: Lyric = {
         title: "a dream of waking",
         PV: "",
         composition: {
-            lyrics: "Rain",
-            music: "Rain",
+            lyrics: "rain",
+            music: "rain",
         }
     },
 

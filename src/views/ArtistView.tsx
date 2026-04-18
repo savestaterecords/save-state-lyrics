@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom"
 import type { Artist } from "../types/Artist"
 import "../style/ArtistView.css"
-import ArtistBanner from "../components/ArtistBanner.tsx";
+import ArtistBanner from "../components/ArtistBanner.tsx"
+import { useTranslation } from "../context/TranslationContext.tsx"
+import { pickText } from "../utils/pickText.tsx"
 
 type ArtistViewProps = {
     artist: Artist
@@ -26,12 +28,13 @@ const sectionLabels: Record<(typeof sectionOrder)[number], string> = {
 }
 
 export default function ArtistView({ artist }: ArtistViewProps) {
+    const { showTranslation } = useTranslation()
+
     return (
         <div className="artist-page">
             <ArtistBanner artist={artist} />
 
             <div className="site-column artist-view">
-
                 {sectionOrder.map((type) => {
                     const releases = artist.releases
                         .filter((release) => release.type === type)
@@ -41,7 +44,9 @@ export default function ArtistView({ artist }: ArtistViewProps) {
 
                     return (
                         <section key={type} className="artist-release-group">
-                            <h2 className="artist-release-group-title">{sectionLabels[type]}</h2>
+                            <h2 className="artist-release-group-title">
+                                {sectionLabels[type]}
+                            </h2>
 
                             <ul className="artist-release-list">
                                 {releases.map((release) => (
@@ -50,7 +55,7 @@ export default function ArtistView({ artist }: ArtistViewProps) {
                                             to={`/${artist.slug}/${release.slug}/`}
                                             className="artist-release-link"
                                         >
-                                            {release.title}
+                                            {pickText(release.title, showTranslation)}
                                         </Link>
                                     </li>
                                 ))}

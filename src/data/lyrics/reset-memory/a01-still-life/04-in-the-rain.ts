@@ -7,8 +7,8 @@ const inTheRain: Lyric = {
         title: "in the rain",
         PV: "",
         composition: {
-            lyrics: "Neos",
-            music: "Rain",
+            lyrics: "neos",
+            music: "rain",
         }
     },
 

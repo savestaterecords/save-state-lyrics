@@ -7,8 +7,8 @@ const missing: Lyric = {
         title: "missing",
         PV: "",
         composition: {
-            lyrics: "Daun",
-            music: "Rain",
+            lyrics: "daun",
+            music: "rain",
         }
     },
 

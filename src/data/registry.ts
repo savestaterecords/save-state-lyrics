@@ -6,7 +6,7 @@ export type ArtistRegistryEntry = {
 }
 
 export const artists: ArtistRegistryEntry[] = [
-    { slug: "lllll", name: "lllll" },
+    { slug: "lllll", name: "[_lllll_]" },
     { slug: "posadas", name: "Posadas" },
     { slug: "reset-memory", name: "reset memory" },
     { slug: "xrosz", name: "XROSZ" },

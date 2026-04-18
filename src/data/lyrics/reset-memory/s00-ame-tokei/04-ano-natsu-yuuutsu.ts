@@ -10,8 +10,8 @@ const anoNatsuYuuutsu: Lyric = {
         },
         PV: "",
         composition: {
-            lyrics: "Rain",
-            music: "Rain",
+            lyrics: "rain",
+            music: "rain",
         }
     },
 

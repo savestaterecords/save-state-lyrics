@@ -11,7 +11,7 @@ const auroraBorealis: Lyric = {
         PV: "youtu.be/PAPMtRc17Zw",
         composition: {
             lyrics: "rain",
-            music: ["rain", "Ria"],
+            music: ["rain", "ria"],
         }
     },
 

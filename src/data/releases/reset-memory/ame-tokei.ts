@@ -10,7 +10,9 @@ const titlesSource = `
 
 const ameTokei: Release = {
     slug: "ame-tokei",
-    title: "雨時計",
+    title: {
+        original: "雨時計",
+        english: "clepsydra"},
     artist: "reset memory",
     artistSlug: "reset-memory",
     type: "single",

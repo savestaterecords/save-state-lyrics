@@ -7,8 +7,8 @@ const endgame: Lyric = {
         title: "endgame",
         PV: "",
         composition: {
-            lyrics: "Rain",
-            music: "Rain",
+            lyrics: "rain",
+            music: "rain",
         }
     },
 

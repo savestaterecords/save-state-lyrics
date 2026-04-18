@@ -8,7 +8,10 @@ interim lover
 
 const auroraBorealis: Release = {
     slug: "aurora-borealis",
-    title: "aurora borealis",
+    title: {
+        original: "aurora borealis",
+        english: "northern lights"
+    },
     artist: "reset memory",
     artistSlug: "reset-memory",
     type: "single",
@@ -21,7 +24,15 @@ const auroraBorealis: Release = {
     keys by Ria @the.rianess
     
     pbotos and video by Jose Martinez    
-    `
+    `,
+    theme: {
+        Hue: 210,
+        strength: "48%",
+        falloffHue: 300,
+        falloffStrength: "52%",
+        toWhite: "18%",
+        titlesHue: 35,
+    }
 }
 
 export default auroraBorealis

@@ -10,8 +10,8 @@ const ameTokei: Lyric = {
         },
         PV: "youtu.be/gbmmIuIO9FI",
         composition: {
-            lyrics: "Rain",
-            music: "Rain",
+            lyrics: "rain",
+            music: "rain",
         }
     },
 
