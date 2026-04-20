@@ -23,6 +23,7 @@ export default function SongView({ lyric, release }: SongViewProps) {
     const { trackSlug } = useParams()
     const songPageRef = useRef<HTMLDivElement | null>(null)
 
+    const isMisc = release.slug === "misc"
     const theme = release.theme ?? null
 
     const songThemeStyle = {
@@ -33,6 +34,14 @@ export default function SongView({ lyric, release }: SongViewProps) {
         "--theme-l-delta": theme?.toWhite ?? "0%",
         "--theme-titles-h": String(theme?.titlesHue ?? theme?.falloffHue ?? theme?.Hue ?? 0),
     } as CSSProperties
+
+    function buildSongPath(slug: string): string {
+        if (isMisc) {
+            return `/${release.artistSlug}/misc/${slug}/`
+        }
+
+        return `/${release.artistSlug}/${release.slug}/${slug}/`
+    }
 
     function goToAdjacentTrack(direction: "previous" | "next") {
         if (!trackSlug) return
@@ -50,7 +59,7 @@ export default function SongView({ lyric, release }: SongViewProps) {
 
         const targetTrack = release.tracklist[targetIndex]
 
-        navigate(`/${release.artistSlug}/${release.slug}/${targetTrack.slug}/`)
+        navigate(buildSongPath(targetTrack.slug))
     }
 
     useEffect(() => {
@@ -145,13 +154,18 @@ export default function SongView({ lyric, release }: SongViewProps) {
                         >
                             {release.artist}
                         </Link>
-                        <span className="song-subtitle-separator"> - </span>
-                        <Link
-                            to={`/${release.artistSlug}/${release.slug}/`}
-                            className="song-release-link"
-                        >
-                            {pickText(release.title, showTranslation)}
-                        </Link>
+
+                        {!isMisc && (
+                            <>
+                                <span className="song-subtitle-separator"> - </span>
+                                <Link
+                                    to={`/${release.artistSlug}/${release.slug}/`}
+                                    className="song-release-link"
+                                >
+                                    {pickText(release.title, showTranslation)}
+                                </Link>
+                            </>
+                        )}
                     </p>
 
                     {compositionParts.length > 0 && (

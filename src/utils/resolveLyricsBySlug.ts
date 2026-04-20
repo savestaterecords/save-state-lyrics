@@ -5,9 +5,18 @@ const lyricModules = import.meta.glob("../data/lyrics/**/*.ts", {
 }) as Record<string, { default: Lyric }>
 
 export function getLyricBySlug(slug: string): Lyric | undefined {
-    const match = Object.entries(lyricModules).find(([path]) =>
+    const directMatch = Object.entries(lyricModules).find(([path]) =>
         path.endsWith(`/${slug}.ts`)
     )
 
-    return match?.[1].default
+    if (directMatch) {
+        return directMatch[1].default
+    }
+
+    const miscMatch = Object.entries(lyricModules).find(([path]) =>
+        /\/x00-misc\/\d+-[^/]+\.ts$/.test(path) &&
+        path.match(/\/x00-misc\/\d+-(.+)\.ts$/)?.[1] === slug
+    )
+
+    return miscMatch?.[1].default
 }

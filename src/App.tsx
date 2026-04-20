@@ -11,6 +11,7 @@ import ReleaseRoute from "./routes/ReleaseRoute.tsx"
 import SongRoute from "./routes/SongRoute.tsx"
 
 import TranslationContext from "./context/TranslationContext.tsx"
+import MiscSongRoute from "./routes/MiscSongRoute.tsx";
 
 export default function App() {
     const [showTranslation, setShowTranslation] = useState(false)
@@ -51,6 +52,7 @@ export default function App() {
                     <Routes>
                         <Route path="/" element={<HomeView />} />
                         <Route path="/:artistSlug/" element={<ArtistRoute />} />
+                        <Route path="/:artistSlug/misc/:trackSlug/" element={<MiscSongRoute />} />
                         <Route path="/:artistSlug/:releaseSlug/" element={<ReleaseRoute />} />
                         <Route path="/:artistSlug/:releaseSlug/:trackSlug/" element={<SongRoute />} />
                     </Routes>
