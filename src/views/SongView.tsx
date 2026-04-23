@@ -6,6 +6,7 @@ import type { CreditPeople } from "../types/Credit.ts"
 import { useEffect, useRef } from "react"
 import { useTranslation } from "../context/TranslationContext.tsx"
 import { pickText } from "../utils/pickText.tsx"
+import { renderCreditsWithHandles } from "../utils/renderCreditsWithHandles.tsx"
 import "../style/SongView.css"
 
 type SongViewProps = {
@@ -230,7 +231,10 @@ export default function SongView({ lyric, release }: SongViewProps) {
                 {lyric.body.credits && (
                     <div className="song-credits">
                         <p className="song-credits-text">
-                            {pickText(lyric.body.credits, showTranslation)}
+                            {typeof lyric.body.credits === "string"
+                                ? renderCreditsWithHandles(pickText(lyric.body.credits, showTranslation))
+                                : renderCreditsWithHandles(pickText(lyric.body.credits, showTranslation))
+                            }
                         </p>
                     </div>
                 )}

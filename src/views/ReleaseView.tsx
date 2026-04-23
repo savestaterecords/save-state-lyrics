@@ -7,6 +7,7 @@ import { useTranslation } from "../context/TranslationContext.tsx"
 import type { CSSProperties } from "react"
 import { useEffect, useState } from "react"
 import {pickText} from "../utils/pickText.tsx";
+import {renderCreditsWithHandles} from "../utils/renderCreditsWithHandles.tsx";
 
 const releaseImages = import.meta.glob("../img/release/*/*.{jpg,jpeg,webp}", {
     eager: true,
@@ -244,7 +245,7 @@ export default function ReleaseView({ release }: ReleaseViewProps) {
             {release.credits && (
                 <div className="site-column release-foot">
                     <p className="release-credits">
-                        {pickText(release.credits, showTranslation)}
+                        {renderCreditsWithHandles(pickText(release.credits, showTranslation))}
                     </p>
                 </div>
             )}
