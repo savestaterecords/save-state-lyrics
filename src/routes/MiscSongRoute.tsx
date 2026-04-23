@@ -36,7 +36,7 @@ export default function MiscSongRoute() {
         title: "Misc",
         artist: artist.name,
         artistSlug: artist.slug,
-        type: "track",
+        type: "other",
         releaseDate: 0,
         tracklist: miscTracks.map((entry) => ({
             title: entry.title,
