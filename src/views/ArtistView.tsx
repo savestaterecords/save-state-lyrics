@@ -16,7 +16,6 @@ const sectionOrder = [
     "ep",
     "single",
     "other",
-    "track",
     "demo",
 ] as const
 
@@ -26,7 +25,6 @@ const sectionLabels: Record<(typeof sectionOrder)[number], string> = {
     ep: "EPs",
     single: "Singles",
     other: "Other",
-    track: "Tracks",
     demo: "Demos",
 }
 

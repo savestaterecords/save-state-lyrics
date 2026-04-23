@@ -5,7 +5,6 @@ export type ReleaseType =
     | "mini-album"
     | "ep"
     | "single"
-    | "track"
     | "demo"
     | "other"
 
