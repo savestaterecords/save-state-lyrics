@@ -27,7 +27,7 @@ const intoTheGround: Lyric = {
         let me back into the ground
         that feeds the coffee tree
         that looks upon itself
-        to speak the word of God
+        to speak the word of Gᴏᴅ
         
         i learn
         to remember nothing
