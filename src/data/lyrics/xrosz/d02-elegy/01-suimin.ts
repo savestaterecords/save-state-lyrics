@@ -6,7 +6,7 @@ const suimin: Lyric = {
     head: {
         title: {
             original: "-睡眠-",
-            english: "-sleep-"
+            english: "- sleep state -"
         },
         PV: "",
         composition: {

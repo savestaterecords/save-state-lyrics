@@ -1,4 +1,5 @@
 import type { Release } from "./Release"
+import type {TranslatableText} from "./Lyric.ts";
 
 export type ArtistTheme = {
     bannerStart?: string
@@ -7,7 +8,7 @@ export type ArtistTheme = {
 
 export type Artist = {
     slug: string
-    name: string
+    name: TranslatableText
     releases: Release[]
     theme?: ArtistTheme
 }

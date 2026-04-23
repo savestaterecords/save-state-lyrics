@@ -3,7 +3,10 @@ import type {Artist} from "../../types/Artist.ts";
 
 const posadas: Artist = {
     slug: "posadas",
-    name: "Posadas",
+    name: {
+        original: "Posadas",
+        english: "Inns"
+    },
     releases: [kyrieEleison],
 }
 

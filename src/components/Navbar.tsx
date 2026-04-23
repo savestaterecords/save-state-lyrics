@@ -1,11 +1,14 @@
 import { Link, useLocation } from "react-router-dom"
 import { artists } from "../data/registry.ts"
 import "../style/Navbar.css"
+import {useTranslation} from "../context/TranslationContext.tsx";
+import {pickText} from "../utils/pickText.tsx";
 
 export default function Navbar() {
     const location = useLocation()
     const pathParts = location.pathname.split("/").filter(Boolean)
     const currentArtistSlug = pathParts[0] ?? null
+    const { showTranslation } = useTranslation()
 
     return (
         <header className="site-navbar">
@@ -21,7 +24,7 @@ export default function Navbar() {
                                     className={`navbar-item${isCurrent ? " is-current" : ""}`}
                                     aria-current={isCurrent ? "page" : undefined}
                                 >
-                                    {artist.name}
+                                    {pickText(artist.name, showTranslation)}
                                 </Link>
 
                                 {index < artists.length - 1 && (

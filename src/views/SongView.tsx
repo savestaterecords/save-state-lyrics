@@ -152,7 +152,7 @@ export default function SongView({ lyric, release }: SongViewProps) {
                             to={`/${release.artistSlug}/`}
                             className="song-artist-link"
                         >
-                            {release.artist}
+                            {pickText(release.artist, showTranslation)}
                         </Link>
 
                         {!isMisc && (

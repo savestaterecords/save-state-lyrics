@@ -1,13 +1,14 @@
 import type {Artist} from "../types/Artist.ts";
+import type { TranslatableText } from "../types/Lyric.ts";
 
 export type ArtistRegistryEntry = {
     slug: string
-    name: string
+    name: TranslatableText
 }
 
 export const artists: ArtistRegistryEntry[] = [
     { slug: "lllll", name: "[_lllll_]" },
-    { slug: "posadas", name: "Posadas" },
+    { slug: "posadas", name: {original: "Posadas", english: "Inns" }},
     { slug: "reset-memory", name: "reset memory" },
     { slug: "xrosz", name: "XROSZ" },
 ]

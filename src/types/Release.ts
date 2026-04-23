@@ -11,7 +11,7 @@ export type ReleaseType =
 export type Release = {
     slug: string
     title: TranslatableText
-    artist: string
+    artist: TranslatableText
     artistSlug: string
     type: ReleaseType
     releaseDate: number

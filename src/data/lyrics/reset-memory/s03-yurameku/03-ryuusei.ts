@@ -6,7 +6,7 @@ const drag: Lyric = {
     head: {
         title: {
             original: "流星",
-            english: "ryuusei"
+            english: "shooting star"
         },
         PV: "",
         composition: {

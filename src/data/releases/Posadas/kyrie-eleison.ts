@@ -28,7 +28,10 @@ const kyrieEleison: Release = {
         original: "KYRIE ELEISON",
         english: "LORD HAVE MERCY"
     },
-    artist: "Posadas",
+    artist: {
+        original: "Posadas",
+        english: "Inns"
+    },
     artistSlug: "posadas",
     type: "album",
     releaseDate: 231031,
