@@ -9,6 +9,7 @@ export type ReleaseType =
     | "other"
 
 export type Release = {
+    private?: boolean
     slug: string
     title: TranslatableText
     artist: TranslatableText

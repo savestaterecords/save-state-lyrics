@@ -4,6 +4,7 @@ import ameTokei from "../releases/reset-memory/ame-tokei.ts";
 import auroraBorealis from "../releases/reset-memory/aurora-borealis.ts";
 import ifAllElseFails from "../releases/reset-memory/if-all-else-fails.ts";
 import yurameku from "../releases/reset-memory/yurameku.ts";
+import yume from "../releases/reset-memory/yume.ts";
 
 
 const resetMemory: Artist = {
@@ -12,6 +13,7 @@ const resetMemory: Artist = {
     releases: [
         // albums
         stillLife,
+        yume,
 
         // singles
         ameTokei,

@@ -55,11 +55,6 @@ const lucid: Lyric = {
 
             }
         ],
-        lyrics: `
-        
-
-
-        `,
         credits: `
         directed and filmed by Taylor Bagley
         as the woman in the blue dress, Maivy @kimi.kosakurai

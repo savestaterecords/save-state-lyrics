@@ -36,6 +36,7 @@ export default function ArtistView({ artist }: ArtistViewProps) {
         .map((type) => ({
             type,
             releases: artist.releases
+                .filter((release) => release.private !== true)
                 .filter((release) => release.type === type)
                 .sort((a, b) => b.releaseDate - a.releaseDate),
         }))
