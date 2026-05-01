@@ -6,7 +6,7 @@ const chiaroscuro: Lyric = {
     head: {
         title: {
             original: "chiaroscuro",
-            english: "light on shadow/**/"
+            english: "light on shadow"
         },
         PV: "",
         composition: {
