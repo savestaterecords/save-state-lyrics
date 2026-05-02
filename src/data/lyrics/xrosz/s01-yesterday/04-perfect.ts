@@ -38,15 +38,14 @@ const perfect: Lyric = {
             {
                 type: "feature",
                 text: `
-                    grex
-                    grex
-                    grex
-                    grex
+                    i never expected to lose myself within it all
+                    i found religion in my sin
+                    another taste to lose control
+                    tonight i walk alone
                     
-                    grex
-                    grex
-                    grex
-                    grex
+                    say it's so
+                    pour it slow
+                    fuck it let's go
                 `
             }
         ]
