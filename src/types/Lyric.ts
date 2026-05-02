@@ -18,7 +18,7 @@ export type LyricBlock =
 }
     | {
     type: "feature"
-    artist: string
+    artist?: string
     text: TranslatableText
 }
 
