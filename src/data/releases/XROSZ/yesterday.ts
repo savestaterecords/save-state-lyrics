@@ -9,7 +9,6 @@ Perfect
 `
 
 const yesterday: Release = {
-    private: true,
     slug: "yesterday",
     title: "Yesterday",
     artist: "XROSZ",
