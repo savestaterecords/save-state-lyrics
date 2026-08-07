@@ -40,6 +40,7 @@
     inset: 0;
     z-index: 0;
     pointer-events: none;
+    opacity: 0.5;
 
     background-image:
         repeating-linear-gradient(
@@ -809,10 +810,6 @@
 }
 
 @media (max-width: 480px) {
-    .home-demo-amp-grille {
-        opacity: 0.5;
-    }
-
     .home-view {
         padding-top: 0.5rem;
     }

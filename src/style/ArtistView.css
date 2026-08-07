@@ -24,6 +24,7 @@
     inset: 0;
     z-index: 0;
     pointer-events: none;
+    opacity: 0.5;
 
     background-image:
         repeating-linear-gradient(
@@ -127,10 +128,4 @@
 
 .artist-release-link:active {
     color: var(--link-active);
-}
-
-@media (max-width: 480px) {
-    .artist-view-amp-grille {
-        opacity: 0.5;
-    }
 }
