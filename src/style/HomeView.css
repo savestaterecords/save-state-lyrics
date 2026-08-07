@@ -823,12 +823,7 @@
     }
 
     .home-demo-upcoming--empty {
-        padding: 0.5rem 1rem;
-    }
-
-    .home-demo-upcoming-empty {
-        font-size: 50%;
-        line-height: 1.35;
+        display: none;
     }
 
     .home-demo-release {
