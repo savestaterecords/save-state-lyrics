@@ -1,3 +1,5 @@
+/* eslint-disable react-refresh/only-export-components -- context + its
+   hook intentionally live in one file; not a component-only module. */
 import { createContext, useContext } from "react"
 
 export type TranslationContextValue = {

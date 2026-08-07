@@ -6,6 +6,7 @@ const endlessShimmeringGlissandi: Lyric = {
     head: {
         title: "Endless Shimmering Glissandi",
         PV: "youtu.be/4SuXcPpa7G4",
+        releaseDate: 231031,
         composition: {
             lyrics: "Rain",
             music: ["Rain", "Quakemaker"],

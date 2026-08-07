@@ -6,6 +6,8 @@ const theBodyAndBlood: Lyric = {
     head: {
         title: "The Body and Blood",
         PV: "youtu.be/17043i_Q0yc",
+        releaseDate: 251230,
+        rank: "E",
         composition: {
             lyrics: "Dan",
             music: "Dan",

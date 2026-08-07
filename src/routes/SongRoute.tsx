@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom"
 import { getArtistBySlug } from "../data/registry.ts"
 import SongView from "../views/SongView.tsx"
-import { getLyricBySlug } from "../utils/resolveLyricsBySlug.ts"
+import { getLyricByRelease } from "../utils/resolveLyricsBySlug.ts"
 
 export default function SongRoute() {
     const { artistSlug, releaseSlug, trackSlug } = useParams()
@@ -22,13 +22,14 @@ export default function SongRoute() {
         return <div className="site-column">Nothing added yet. Tell Rain to work harder.</div>
     }
 
-    const track = release.tracklist.find((entry) => entry.slug === trackSlug)
+    const track = release.tracklist
+        .find((entry) => entry.slug === trackSlug)
 
     if (!track) {
         return <div className="site-column">Nothing added yet. Tell Rain to work harder.</div>
     }
 
-    const lyric = getLyricBySlug(trackSlug)
+    const lyric = getLyricByRelease(artistSlug, release.slug, trackSlug)
 
     if (!lyric) {
         return <div className="site-column">Nothing added yet. Tell Rain to work harder.</div>

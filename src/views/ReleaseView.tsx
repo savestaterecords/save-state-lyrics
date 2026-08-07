@@ -2,83 +2,17 @@ import { Link } from "react-router-dom"
 import { artists } from "../data/registry.ts"
 import type { Release } from "../types/Release.ts"
 import "../style/ReleaseView.css"
-import { getLyricBySlug } from "../utils/resolveLyricsBySlug.ts"
+import { getLyricByRelease } from "../utils/resolveLyricsBySlug.ts"
 import { useTranslation } from "../context/TranslationContext.tsx"
 import type { CSSProperties } from "react"
 import { useEffect, useState } from "react"
 import {pickText} from "../utils/pickText.tsx";
 import {renderCreditsWithHandles} from "../utils/renderCreditsWithHandles.tsx";
-
-const releaseImages = import.meta.glob("../img/release/*/*.{jpg,jpeg,webp}", {
-    eager: true,
-    import: "default",
-}) as Record<string, string>
+import {formatReleaseDate} from "../utils/formatReleaseDate.ts";
+import {getReleaseImages} from "../utils/resolveReleaseImages.ts";
 
 type ReleaseViewProps = {
     release: Release
-}
-
-function getReleaseImages(
-    artistSlug: string,
-    releaseSlug: string,
-): { thumb?: string; full?: string } {
-    const thumbCandidates = [
-        `../img/release/${artistSlug}/${releaseSlug}_thumb.webp`,
-    ]
-
-    const fullCandidates = [
-        `../img/release/${artistSlug}/${releaseSlug}.jpg`,
-        `../img/release/${artistSlug}/${releaseSlug}.jpeg`,
-        `../img/release/${artistSlug}/${releaseSlug}.webp`,
-    ]
-
-    let thumb: string | undefined
-    let full: string | undefined
-
-    for (const candidate of thumbCandidates) {
-        if (candidate in releaseImages) {
-            thumb = releaseImages[candidate]
-            break
-        }
-    }
-
-    for (const candidate of fullCandidates) {
-        if (candidate in releaseImages) {
-            full = releaseImages[candidate]
-            break
-        }
-    }
-
-    return { thumb, full }
-}
-
-function formatReleaseDate(date: number): string {
-    const raw = date.toString().padStart(6, "0")
-
-    const yy = raw.slice(0, 2)
-    const mm = raw.slice(2, 4)
-    const dd = raw.slice(4, 6)
-
-    const year = Number(`20${yy}`)
-    const monthIndex = Number(mm) - 1
-    const day = Number(dd)
-
-    const months = [
-        "January",
-        "February",
-        "March",
-        "April",
-        "May",
-        "June",
-        "July",
-        "August",
-        "September",
-        "October",
-        "November",
-        "December",
-    ]
-
-    return `${months[monthIndex]} ${day}, ${year}`
 }
 
 export default function ReleaseView({ release }: ReleaseViewProps) {
@@ -182,7 +116,7 @@ export default function ReleaseView({ release }: ReleaseViewProps) {
 
             <div className="site-column release-body">
                 {release.tracklist.map((track) => {
-                    const lyric = getLyricBySlug(track.slug)
+                    const lyric = getLyricByRelease(release.artistSlug, release.slug, track.slug)
 
                     if (!lyric) {
                         return (

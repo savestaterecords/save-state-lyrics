@@ -9,6 +9,8 @@ const gracia: Lyric = {
             english: "Grace",
         },
         PV: "youtu.be/faPgRwUCH5M",
+        releaseDate: 251216,
+        rank: "D",
         composition: {
             lyrics: ["Dan", "Gabriela"],
             music: "Rain",

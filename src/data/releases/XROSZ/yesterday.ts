@@ -36,12 +36,12 @@ const yesterday: Release = {
     Logo Design: @jrocknroll_
     `,
     theme: {
-        Hue: 38,              // sodium/amber, not red-orange
-        strength: "92%",      // strong but not clipping everything
-        falloffHue: 28,       // dirtier, more brown in shadows
+        Hue: 38,
+        strength: "92%",
+        falloffHue: 28,
         falloffStrength: "65%",
-        toWhite: "0%",       // critical: emulate blown filament center
-        titlesHue: 30         // keep in-family but slightly distinct
+        toWhite: "0%",
+        titlesHue: 30
     }
 }
 

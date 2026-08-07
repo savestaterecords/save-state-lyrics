@@ -18,7 +18,7 @@ const perfect: Lyric = {
                 type: "lyrics",
                 text: `
                     your perfect taste meant happiness, if i'm being honest
-                    calmly erase my memory, cuz i don't even want it'
+                    calmly erase my memory, cuz i don't even want it
                     make my toxic dreams come true, make me feel guiltless
                     start life over as someone new, it sounds so perfect
                     

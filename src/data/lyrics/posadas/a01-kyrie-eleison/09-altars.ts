@@ -6,6 +6,7 @@ const altars: Lyric = {
     head: {
         title: "Altars",
         PV: "youtu.be/c1l2g1xRdMg",
+        releaseDate: 210209,
         composition: {
             lyrics: "Dan",
             music: "Dan",

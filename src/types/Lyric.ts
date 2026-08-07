@@ -29,6 +29,8 @@ export type Lyric = {
         title: TranslatableText
         PV: string | null
         composition: Composition
+        releaseDate?: number
+        rank?: "A" | "B" | "D" | "E" | "F"
     }
 
     body:

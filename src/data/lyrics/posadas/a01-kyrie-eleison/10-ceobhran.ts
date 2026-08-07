@@ -9,6 +9,8 @@ const ceobhran: Lyric = {
             english: "Little Mist",
         },
         PV: "youtu.be/4SuXcPpa7G4",
+        releaseDate: 210224,
+        rank: "E",
         composition: {
             lyrics: "Dan",
             music: "Dan",

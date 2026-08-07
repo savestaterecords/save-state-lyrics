@@ -5,7 +5,8 @@ const lyricModules = import.meta.glob("../data/lyrics/**/*.ts", {
 }) as Record<string, { default: Lyric }>
 
 export function getLyricBySlug(slug: string): Lyric | undefined {
-    const directMatch = Object.entries(lyricModules).find(([path]) =>
+    const directMatch = Object.entries(lyricModules)
+        .find(([path]) =>
         path.endsWith(`/${slug}.ts`)
     )
 
@@ -13,10 +14,32 @@ export function getLyricBySlug(slug: string): Lyric | undefined {
         return directMatch[1].default
     }
 
-    const miscMatch = Object.entries(lyricModules).find(([path]) =>
+    const miscMatch = Object.entries(lyricModules)
+        .find(([path]) =>
         /\/x00-misc\/\d+-[^/]+\.ts$/.test(path) &&
         path.match(/\/x00-misc\/\d+-(.+)\.ts$/)?.[1] === slug
     )
 
     return miscMatch?.[1].default
+}
+
+export function getLyricByRelease(
+    artistSlug: string,
+    releaseSlug: string,
+    trackSlug: string,
+): Lyric | undefined {
+    const match = Object.entries(lyricModules)
+        .find(([path]) => {
+        if (!path.endsWith(`/${trackSlug}.ts`)) return false
+
+        const folderMatch = path.match(
+            new RegExp(`/data/lyrics/${artistSlug}/([a-z]\\d{2}-[^/]+)/`)
+        )
+        if (!folderMatch) return false
+
+        const folderReleaseSlug = folderMatch[1].replace(/^[a-z]\d{2}-/, "")
+        return folderReleaseSlug === releaseSlug
+    })
+
+    return match?.[1].default
 }

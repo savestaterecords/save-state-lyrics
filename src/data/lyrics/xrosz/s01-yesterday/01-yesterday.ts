@@ -5,7 +5,7 @@ const yesterday: Lyric = {
 
     head: {
         title: "Yesterday",
-        PV: "",
+        PV: "https://youtu.be/dPtGlggsNqw",
         composition: {
             music: "Zen",
             lyrics: "Zen"

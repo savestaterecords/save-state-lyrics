@@ -6,6 +6,8 @@ const Sangria: Lyric = {
     head: {
         title: "Sangria",
         PV: "outu.be/sETMS7b7SI8",
+        releaseDate: 211017,
+        rank: "D",
         composition: {
             lyrics: "Dan",
             music: ["Dan", "IMAX"],

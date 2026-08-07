@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom"
 import { useEffect, useState } from "react"
 
 import HomeView from "./views/HomeView"
+import AboutView from "./views/AboutView"
 import Navbar from "./components/Navbar.tsx"
 import Footer from "./components/Footer.tsx"
 import TranslateToggle from "./components/TranslateToggle.tsx"
@@ -51,6 +52,7 @@ export default function App() {
                 <main className="site-main">
                     <Routes>
                         <Route path="/" element={<HomeView />} />
+                        <Route path="/about/" element={<AboutView />} />
                         <Route path="/:artistSlug/" element={<ArtistRoute />} />
                         <Route path="/:artistSlug/misc/:trackSlug/" element={<MiscSongRoute />} />
                         <Route path="/:artistSlug/:releaseSlug/" element={<ReleaseRoute />} />

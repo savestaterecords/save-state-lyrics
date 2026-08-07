@@ -6,6 +6,7 @@ const theDescent: Lyric = {
     head: {
         title: "The Descent",
         PV: "youtu.be/9Oj20IRksME",
+        releaseDate: 200707,
         composition: {
             music: "Matt",
             lyrics: "Matt"

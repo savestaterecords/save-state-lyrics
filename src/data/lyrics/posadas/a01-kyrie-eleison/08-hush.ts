@@ -6,6 +6,7 @@ const hush: Lyric = {
     head: {
         title: "Hush",
         PV: "youtu.be/ZLK5u2HR7ww",
+        releaseDate: 201031,
         composition: {
             lyrics: "Dan",
             music: "Rain",

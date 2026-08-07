@@ -7,10 +7,10 @@ export type ArtistRegistryEntry = {
 }
 
 export const artists: ArtistRegistryEntry[] = [
+    { slug: "xrosz", name: "XROSZ" },
+    { slug: "reset-memory", name: "reset memory" },
     { slug: "lllll", name: "[_lllll_]" },
     { slug: "posadas", name: {original: "Posadas", english: "Inns" }},
-    { slug: "reset-memory", name: "reset memory" },
-    { slug: "xrosz", name: "XROSZ" },
 ]
 
 const artistModules = import.meta.glob("./artists/*.ts", { eager: true })
@@ -20,3 +20,4 @@ export function getArtistBySlug(slug: string): Artist | undefined {
     const mod = artistModules[path] as { default: Artist } | undefined
     return mod?.default
 }
+

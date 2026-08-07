@@ -8,6 +8,7 @@
 }
 
 .artist-view {
+    position: relative;
     width: 100vw;
     display: flex;
     flex-direction: column;
@@ -17,7 +18,59 @@
     padding-top: 5rem;
 }
 
+.artist-view-amp-grille {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+
+    background-image:
+        repeating-linear-gradient(
+            45deg,
+            hsl(0 0% 100% / 0.07) 0 1px,
+            transparent 1px 8px
+        ),
+        repeating-linear-gradient(
+            -45deg,
+            hsl(0 0% 100% / 0.07) 0 1px,
+            transparent 1px 8px
+        );
+
+    mask-image: linear-gradient(
+        to bottom,
+        transparent,
+        black 2rem,
+        black calc(100% - 2rem),
+        transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+        to bottom,
+        transparent,
+        black 2rem,
+        black calc(100% - 2rem),
+        transparent 100%
+    );
+}
+
+@media (prefers-color-scheme: light) {
+    .artist-view-amp-grille {
+        background-image:
+            repeating-linear-gradient(
+                45deg,
+                hsl(0 0% 0% / 0.035) 0 1px,
+                transparent 1px 8px
+            ),
+            repeating-linear-gradient(
+                -45deg,
+                hsl(0 0% 0% / 0.035) 0 1px,
+                transparent 1px 8px
+            );
+    }
+}
+
 .artist-release-group {
+    position: relative;
+    z-index: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -26,11 +79,25 @@
 
 .artist-release-group-title {
     font-family: var(--font-sans);
-    font-size: 0.95rem;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
     font-weight: 600;
     color: var(--subtle);
     margin-bottom: 0.15rem;
-    opacity: 85%
+    opacity: 85%;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.artist-release-group-title::before,
+.artist-release-group-title::after {
+    content: "~";
+    color: var(--subtle);
+    opacity: 0.6;
+    font-weight: 400;
+    letter-spacing: 0;
 }
 
 .artist-release-list {
@@ -46,8 +113,8 @@
 .artist-release-link {
     font-family: var(--font-serif);
     font-size: 1.25rem;
-    font-weight: 300;
-    letter-spacing: 0.04em;
+    font-weight: 400;
+    letter-spacing: -0.01em;
 
     color: var(--link);
     text-decoration: none;

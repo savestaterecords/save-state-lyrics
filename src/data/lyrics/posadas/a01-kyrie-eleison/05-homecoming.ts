@@ -6,6 +6,7 @@ const homecoming: Lyric = {
     head: {
         title: "Homecoming",
         PV: "youtu.be/ir9FU-ZKVok",
+        releaseDate: 251108,
         composition: {
             lyrics: "Annabel McGill",
             music: "Dan",

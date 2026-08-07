@@ -8,7 +8,7 @@ const yurameku: Lyric = {
             original: "yurameku.",
             english: "wavering."
         },
-        PV: "",
+        PV: "youtu.be/BAMpB5ha3yA",
         composition: {
             lyrics: "rain",
             music: "rain",

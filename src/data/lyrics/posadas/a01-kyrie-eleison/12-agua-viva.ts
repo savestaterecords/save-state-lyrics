@@ -9,6 +9,8 @@ const aguaViva: Lyric = {
             english: "Living Water",
         },
         PV: "youtu.be/LkYrFF_pEV8",
+        releaseDate: 211225,
+        rank: "E",
         composition: {
             lyrics: "Dan",
             music: "Rain",

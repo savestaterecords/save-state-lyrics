@@ -6,6 +6,8 @@ const sowingSalt: Lyric = {
     head: {
         title: "Sowing Salt",
         PV: "youtu.be/jB4bD7Ax9Dw",
+        releaseDate: 251223,
+        rank: "E",
         composition: {
             lyrics: "Dan",
             music: "Rain",

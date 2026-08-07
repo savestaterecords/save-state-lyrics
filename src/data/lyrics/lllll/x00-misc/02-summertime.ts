@@ -6,6 +6,7 @@ const summertime: Lyric = {
     head: {
         title: "Summertime",
         PV: "youtu.be/EWYqRYVjA1U",
+        releaseDate: 260325,
         composition: {
             lyrics: "Rain",
             music: "Rain"

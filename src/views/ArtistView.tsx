@@ -49,6 +49,8 @@ export default function ArtistView({ artist }: ArtistViewProps) {
             <ArtistBanner artist={artist} />
 
             <div className="site-column artist-view">
+                <div className="artist-view-amp-grille" aria-hidden="true" />
+
                 {releaseSections.map(({ type, releases }) => (
                     <section key={type} className="artist-release-group">
                         <h2 className="artist-release-group-title">
@@ -72,9 +74,9 @@ export default function ArtistView({ artist }: ArtistViewProps) {
 
                 {miscTracks.length > 0 && (
                     <section className="artist-release-group">
-                        {hasRealReleaseSections && (
-                            <h2 className="artist-release-group-title">Misc</h2>
-                        )}
+                        <h2 className="artist-release-group-title">
+                            {hasRealReleaseSections ? "Misc" : "Tracks"}
+                        </h2>
 
                         <ul className="artist-release-list">
                             {miscTracks.map((track) => (

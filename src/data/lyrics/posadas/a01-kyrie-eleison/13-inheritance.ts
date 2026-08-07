@@ -6,6 +6,8 @@ const inheritance: Lyric = {
     head: {
         title: "Inheritance",
         PV: "youtu.be/7Pr_otbaayE",
+        releaseDate: 220424,
+        rank: "B",
         composition: {
             lyrics: "Rain",
             music: "Rain",

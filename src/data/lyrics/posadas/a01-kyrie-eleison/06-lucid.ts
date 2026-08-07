@@ -6,6 +6,7 @@ const lucid: Lyric = {
     head: {
         title: "Lucid",
         PV: "youtu.be/C5b7KxdkHU0",
+        releaseDate: 230820,
         composition: {
             lyrics: ["Dan", "Coraline", "Rain"],
             music: "Dan",

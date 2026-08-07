@@ -6,6 +6,7 @@ const enough: Lyric = {
     head: {
         title: "Enough",
         PV: "youtu.be/BNWvy334Bjo",
+        releaseDate: 200420,
         composition: {
             music: "Matt",
             lyrics: "Matt"

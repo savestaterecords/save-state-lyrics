@@ -6,6 +6,7 @@ const killMe: Lyric = {
     head: {
         title: "Kill Me",
         PV: "youtu.be/vBbCrIBnAgg",
+        releaseDate: 260125,
         composition: {
             lyrics: "Alyssa",
             music: "Rain"

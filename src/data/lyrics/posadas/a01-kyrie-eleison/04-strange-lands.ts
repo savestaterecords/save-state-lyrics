@@ -6,6 +6,8 @@ const strangeLands: Lyric = {
     head: {
         title: "Strange Lands",
         PV: "youtu.be/sWb508W4838",
+        releaseDate: 220809,
+        rank: "A",
         composition: {
             lyrics: ["Dan", "Day$tar"],
             music: "Dan",

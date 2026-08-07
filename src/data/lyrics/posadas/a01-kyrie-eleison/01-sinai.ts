@@ -6,6 +6,8 @@ const sinai: Lyric = {
     head: {
         title: "Sinai",
         PV: "youtu.be/tAAnItDkPd4",
+        releaseDate: 210505,
+        rank: "A",
         composition: {
             lyrics: "Dan",
             music: ["Dan", "Rain"],

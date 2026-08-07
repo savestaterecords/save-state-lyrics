@@ -9,6 +9,8 @@ const laEntrega: Lyric = {
             english: "The Surrender",
         },
         PV: "youtu.be/3HO45RVcnbA",
+        releaseDate: 251124,
+        rank: "E",
         composition: {
             lyrics: "Dan",
             music: "Dan",
