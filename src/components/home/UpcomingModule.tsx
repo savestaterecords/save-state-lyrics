@@ -14,11 +14,9 @@ export default function UpcomingModule() {
 
     const resolvedUpcoming = upcoming ? resolveUpcoming(upcoming) : null
     const upcomingArtist = resolvedUpcoming ? getArtistBySlug(resolvedUpcoming.artistSlug) : undefined
-    const upcomingArtistLabel = resolvedUpcoming
-        ? upcomingArtist
-            ? pickText(upcomingArtist.name, showTranslation)
-            : resolvedUpcoming.artistSlug
-        : ""
+    const upcomingArtistLabel = upcomingArtist
+        ? pickText(upcomingArtist.name, showTranslation)
+        : resolvedUpcoming?.artistSlug ?? ""
 
     const upcomingAccentStyle = resolvedUpcoming?.accentHue !== undefined
         ? ({ "--upcoming-accent-h": String(resolvedUpcoming.accentHue) } as CSSProperties)
@@ -67,92 +65,83 @@ export default function UpcomingModule() {
 
     const [tracklistOpen, setTracklistOpen] = useState(false)
 
+    if (!resolvedUpcoming) return null
+
     return (
         <>
             <section
-                className={`home-demo-upcoming${resolvedUpcoming 
-                    ? "" : " home-demo-upcoming--empty"}${upcomingAccentStyle ? " home-demo-upcoming--accent" : ""}`}
+                className={`home-demo-upcoming${upcomingAccentStyle ? " home-demo-upcoming--accent" : ""}`}
                 style={upcomingAccentStyle}
             >
-                {resolvedUpcoming && (
-                    resolvedUpcoming.art ? (
-                        resolvedUpcoming.artFull ? (
-                            <button
-                                type="button"
-                                className="home-demo-upcoming-art home-demo-upcoming-art-button"
-                                onClick={openUpcomingArt}
-                                aria-label={`Open ${pickText(resolvedUpcoming.title, showTranslation)} album art`}
-                            >
-                                <img
-                                    src={resolvedUpcoming.art}
-                                    alt=""
-                                    className="home-demo-upcoming-art-img"
-                                    draggable={false}
-                                />
-                            </button>
-                        ) : (
-                            <div className="home-demo-upcoming-art">
-                                <img
-                                    src={resolvedUpcoming.art}
-                                    alt=""
-                                    className="home-demo-upcoming-art-img"
-                                    draggable={false}
-                                />
-                            </div>
-                        )
-                    ) : (
-                        <div
-                            className="home-demo-upcoming-art"
-                            role="img"
-                            aria-label="No artwork available yet"
+                {resolvedUpcoming.art ? (
+                    resolvedUpcoming.artFull ? (
+                        <button
+                            type="button"
+                            className="home-demo-upcoming-art home-demo-upcoming-art-button"
+                            onClick={openUpcomingArt}
+                            aria-label={`Open ${pickText(resolvedUpcoming.title, showTranslation)} album art`}
                         >
-                            <span aria-hidden="true">♫</span>
+                            <img
+                                src={resolvedUpcoming.art}
+                                alt=""
+                                className="home-demo-upcoming-art-img"
+                                draggable={false}
+                            />
+                        </button>
+                    ) : (
+                        <div className="home-demo-upcoming-art">
+                            <img
+                                src={resolvedUpcoming.art}
+                                alt=""
+                                className="home-demo-upcoming-art-img"
+                                draggable={false}
+                            />
                         </div>
                     )
+                ) : (
+                    <div
+                        className="home-demo-upcoming-art"
+                        role="img"
+                        aria-label="No artwork available yet"
+                    >
+                        <span aria-hidden="true">♫</span>
+                    </div>
                 )}
 
                 <div className="home-demo-upcoming-main">
-                    {resolvedUpcoming ? (
-                        <>
-                            <p className="home-demo-upcoming-status">
-                                <span className="home-demo-upcoming-tag">next release:</span>
-                                {" "}
-                                {buildUpcomingStatusLine(resolvedUpcoming, showTranslation)}
-                            </p>
-                            <div className="home-demo-upcoming-stack">
-                                <p className="home-demo-upcoming-stack-line home-demo-upcoming-stack-tag">
-                                    next release:
-                                </p>
-                                <p className="home-demo-upcoming-stack-line">
-                                    {upcomingArtistLabel}
-                                </p>
-                                <p className="home-demo-upcoming-stack-line">
-                                    {pickText(resolvedUpcoming.title, showTranslation)}
-                                </p>
-                                {resolvedUpcoming.releaseDate && (
-                                    <p className="home-demo-upcoming-stack-line">
-                                        {formatReleaseDate(resolvedUpcoming.releaseDate)}
-                                    </p>
-                                )}
-                                {resolvedUpcoming.note && resolvedUpcoming.note.split(", ")
-                                    .map((part) => (
-                                    <p
-                                        key={part}
-                                        className="home-demo-upcoming-stack-line home-demo-upcoming-stack-note"
-                                    >
-                                        {part}
-                                    </p>
-                                ))}
-                            </div>
-                        </>
-                    ) : (
-                        <p className="home-demo-upcoming-empty">
-                            Lyrics for all works of Save State Records.
+                    <p className="home-demo-upcoming-status">
+                        <span className="home-demo-upcoming-tag">next release:</span>
+                        {" "}
+                        {buildUpcomingStatusLine(resolvedUpcoming, showTranslation)}
+                    </p>
+                    <div className="home-demo-upcoming-stack">
+                        <p className="home-demo-upcoming-stack-line home-demo-upcoming-stack-tag">
+                            next release:
                         </p>
-                    )}
+                        <p className="home-demo-upcoming-stack-line">
+                            {upcomingArtistLabel}
+                        </p>
+                        <p className="home-demo-upcoming-stack-line">
+                            {pickText(resolvedUpcoming.title, showTranslation)}
+                        </p>
+                        {resolvedUpcoming.releaseDate && (
+                            <p className="home-demo-upcoming-stack-line">
+                                {formatReleaseDate(resolvedUpcoming.releaseDate)}
+                            </p>
+                        )}
+                        {resolvedUpcoming.note && resolvedUpcoming.note.split(", ")
+                            .map((part) => (
+                            <p
+                                key={part}
+                                className="home-demo-upcoming-stack-line home-demo-upcoming-stack-note"
+                            >
+                                {part}
+                            </p>
+                        ))}
+                    </div>
                 </div>
 
-                {resolvedUpcoming && resolvedUpcoming.resources.length > 0 && (
+                {resolvedUpcoming.resources.length > 0 && (
                     <ul className="home-demo-resource-list">
                         {resolvedUpcoming.resources.map((resource) => (
                             <li key={resource.label}>
@@ -160,7 +149,7 @@ export default function UpcomingModule() {
                                     <button
                                         type="button"
                                         className={
-                                            `home-demo-resource home-demo-resource-button${tracklistOpen 
+                                            `home-demo-resource home-demo-resource-button${tracklistOpen
                                             ? " is-open" : ""}`
                                         }
                                         onClick={() => setTracklistOpen((open) => !open)}
@@ -185,7 +174,7 @@ export default function UpcomingModule() {
                     </ul>
                 )}
 
-                {resolvedUpcoming?.tracklist && (
+                {resolvedUpcoming.tracklist && (
                     <div
                         className={`home-demo-tracklist-drawer${tracklistOpen ? " is-open" : ""}`}
                     >
@@ -217,7 +206,7 @@ export default function UpcomingModule() {
                 )}
             </section>
 
-            {upcomingArtOpen && resolvedUpcoming?.artFull && (
+            {upcomingArtOpen && resolvedUpcoming.artFull && (
                 <div
                     className="home-demo-upcoming-art-modal"
                     role="dialog"

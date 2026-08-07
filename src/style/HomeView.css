@@ -253,27 +253,6 @@
     letter-spacing: 0.08em;
 }
 
-.home-demo-upcoming-empty {
-    text-align: center;
-    margin: 0;
-
-    font-family: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, monospace;
-    font-size: 0.85rem;
-    letter-spacing: 0.01em;
-    color: var(--subtle);
-}
-
-.home-demo-upcoming--empty {
-    justify-content: center;
-    border: none;
-    background: transparent;
-}
-
-.home-demo-upcoming--empty .home-demo-upcoming-main {
-    align-items: center;
-    justify-content: center;
-}
-
 .home-demo-resource-list {
     list-style: none;
     padding: 0;
@@ -336,19 +315,6 @@
 
         .home-demo-tracklist-drawer {
             grid-column: 1 / -1;
-        }
-
-        .home-demo-upcoming--empty {
-            grid-template-columns: 1fr;
-            grid-template-rows: 1fr;
-            grid-template-areas: "main";
-            justify-items: center;
-            align-items: center;
-        }
-
-        .home-demo-upcoming--empty .home-demo-upcoming-main {
-            align-items: center;
-            justify-content: center;
         }
 
         .home-demo-upcoming-main {
@@ -817,10 +783,6 @@
     .home-demo {
         padding-top: 0.25rem;
         gap: 1.5rem;
-    }
-
-    .home-demo-upcoming--empty {
-        display: none;
     }
 
     .home-demo-release {
