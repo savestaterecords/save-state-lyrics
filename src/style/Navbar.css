@@ -354,6 +354,7 @@
     }
 
     .navbar-artists {
+        grid-column: auto;
         position: absolute;
         left: 50%;
         top: 50%;
