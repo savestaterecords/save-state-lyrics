@@ -127,3 +127,13 @@
 .artist-release-link:active {
     color: var(--link-active);
 }
+
+@media (max-width: 480px) {
+    .artist-view {
+        min-height: calc(100dvh - 9rem);
+    }
+
+    .artist-view-amp-grille {
+        opacity: 0.5;
+    }
+}

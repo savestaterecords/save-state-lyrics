@@ -22,6 +22,10 @@ export default function Navbar() {
     const [artistsOpen, setArtistsOpen] = useState(false)
     const dropdownRef = useRef<HTMLDivElement | null>(null)
 
+    const [searchOpen, setSearchOpen] = useState(false)
+    const searchRef = useRef<HTMLFormElement | null>(null)
+    const searchInputRef = useRef<HTMLInputElement | null>(null)
+
     // Closes the dropdown on route change (i.e. after picking an artist).
     // Reset happens during render (React's recommended pattern for "adjust
     // state when a value changes") rather than in an effect — calling
@@ -52,6 +56,28 @@ export default function Navbar() {
             document.removeEventListener("keydown", handleKeyDown)
         }
     }, [artistsOpen])
+
+    useEffect(() => {
+        if (!searchOpen) return
+
+        searchInputRef.current?.focus()
+
+        const handleClickOutside = (event: MouseEvent) => {
+            if (searchRef.current && !searchRef.current.contains(event.target as Node)) {
+                setSearchOpen(false)
+            }
+        }
+        const handleKeyDown = (event: KeyboardEvent) => {
+            if (event.key === "Escape") setSearchOpen(false)
+        }
+
+        document.addEventListener("mousedown", handleClickOutside)
+        document.addEventListener("keydown", handleKeyDown)
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside)
+            document.removeEventListener("keydown", handleKeyDown)
+        }
+    }, [searchOpen])
 
     return (
         <header className="site-navbar">
@@ -110,19 +136,27 @@ export default function Navbar() {
                 </div>
 
                 <form
-                    className="navbar-search"
+                    ref={searchRef}
+                    className={`navbar-search${searchOpen ? " is-expanded" : ""}`}
                     onSubmit={(event) => {
                         event.preventDefault()
                         window.alert("search doesn't work yet. tell rain to work harder.")
                     }}
                 >
                     <input
+                        ref={searchInputRef}
                         type="search"
                         className="navbar-search-input"
                         placeholder="Search"
                         aria-label="Search"
+                        tabIndex={searchOpen ? 0 : -1}
                     />
-                    <span className="navbar-search-icon" aria-hidden="true" />
+                    <button
+                        type="button"
+                        className="navbar-search-icon"
+                        aria-label="Toggle search"
+                        onClick={() => setSearchOpen((open) => !open)}
+                    />
                 </form>
             </div>
         </header>

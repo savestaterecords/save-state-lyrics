@@ -807,3 +807,51 @@
 .artist-link:active {
     color: var(--link-active);
 }
+
+@media (max-width: 480px) {
+    .home-demo-amp-grille {
+        opacity: 0.5;
+    }
+
+    .home-view {
+        padding-top: 0.5rem;
+    }
+
+    .home-demo {
+        padding-top: 0.25rem;
+        gap: 1.5rem;
+    }
+
+    .home-demo-upcoming--empty {
+        padding: 0.5rem 1rem;
+    }
+
+    .home-demo-upcoming-empty {
+        font-size: 0.78rem;
+        line-height: 1.35;
+    }
+
+    .home-demo-release {
+        gap: 1rem;
+    }
+
+    .home-demo-pv-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+    }
+
+    .home-demo-pv-tile,
+    .home-demo-pv-thumb {
+        width: 100%;
+    }
+
+    .home-demo-pv-thumb {
+        height: auto;
+        aspect-ratio: 220 / 124;
+    }
+
+    .home-demo-pvs {
+        order: 1;
+    }
+}

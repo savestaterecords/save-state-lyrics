@@ -297,7 +297,12 @@
     height: 0.7em;
     border: 1.5px solid var(--subtle);
     border-radius: 50%;
+    background: none;
+    padding: 0;
+    font: inherit;
+    appearance: none;
     pointer-events: none;
+    cursor: default;
 }
 
 .navbar-search-icon::after {
@@ -330,5 +335,84 @@
 @media (max-aspect-ratio: 1/1) {
     .navbar-mark-logo-letters {
         display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar-inner {
+        position: relative;
+        grid-template-columns: 1fr auto;
+    }
+
+    .navbar-mark {
+        grid-column: 1;
+    }
+
+    .navbar-search {
+        grid-column: 2;
+        justify-self: end;
+    }
+
+    .navbar-artists {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 22;
+    }
+
+    .navbar-search-input {
+        width: 0;
+        padding-left: 0;
+        padding-right: 0;
+        border-color: transparent;
+        background: transparent;
+        opacity: 0;
+        pointer-events: none;
+        transition: width 0.25s ease, opacity 0.2s ease, padding 0.25s ease, border-color 0.25s ease;
+    }
+
+    .navbar-search.is-expanded .navbar-search-input {
+        width: 7rem;
+        padding: 0.25rem 0.5rem 0.25rem 2.6em;
+        border-color: hsl(0 0% 100% / 0.1);
+        background: hsl(0 0% 100% / 0.04);
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .navbar-search-icon {
+        position: static;
+        transform: none;
+        width: 1.7rem;
+        height: 1.7rem;
+        border: 1px solid hsl(0 0% 100% / 0.1);
+        background: hsl(0 0% 100% / 0.04);
+        cursor: pointer;
+        padding: 0;
+        flex-shrink: 0;
+        pointer-events: auto;
+    }
+
+    .navbar-search-icon::after {
+        right: 0.4em;
+        bottom: 0.4em;
+    }
+
+    .navbar-search.is-expanded .navbar-search-icon {
+        position: absolute;
+        top: 50%;
+        left: 0.75em;
+        transform: translateY(-50%);
+        width: 0.7em;
+        height: 0.7em;
+        border: 1.5px solid var(--subtle);
+        background: transparent;
+        cursor: pointer;
+    }
+
+    .navbar-search.is-expanded .navbar-search-icon::after {
+        right: -0.35em;
+        bottom: -0.35em;
     }
 }
