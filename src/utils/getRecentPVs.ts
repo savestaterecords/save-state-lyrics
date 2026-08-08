@@ -1,6 +1,7 @@
 import { artists, getArtistBySlug } from "../data/registry.ts"
 import { getLyricByRelease, getLyricBySlug } from "./resolveLyricsBySlug.ts"
 import { getMiscTracksByArtist } from "./resolveMiscTracksByArtist.ts"
+import { getYouTubeVideoId } from "./getYouTubeVideoId.ts"
 import type { TranslatableText } from "../types/Lyric.ts"
 
 export type RecentPV = {
@@ -58,15 +59,53 @@ function getDatedPVsByArtist(artistSlug: string): DatedPV[] {
         })
     }
 
-    return entries
+    return dedupeByPV(entries)
+}
+
+function gradeInformativeness(rank: Rank | undefined): number {
+    if (!rank) return -1
+    const letterNum = rank.charCodeAt(0) - "A".charCodeAt(0) + 1
+    const distanceFromC = Math.abs(letterNum - 3)
+    return distanceFromC * 10 + letterNum
+}
+
+function moreInformative(a: DatedPV, b: DatedPV): DatedPV {
+    const scoreA = gradeInformativeness(a.rank)
+    const scoreB = gradeInformativeness(b.rank)
+    if (scoreA !== scoreB) return scoreA > scoreB ? a : b
+    return a.releaseDate <= b.releaseDate ? a : b
+}
+
+function dedupeByPV(entries: DatedPV[]): DatedPV[] {
+    const groups = new Map<string, DatedPV[]>()
+
+    for (const entry of entries) {
+        const key = getYouTubeVideoId(entry.pv) ?? entry.pv
+        const group = groups.get(key)
+        if (group) group.push(entry)
+        else groups.set(key, [entry])
+    }
+
+    return [...groups.values()].map((group) => group.reduce(moreInformative))
+}
+
+function fmix32(input: number): number {
+    let hash = input
+    hash ^= hash >>> 16
+    hash = Math.imul(hash, 0x85ebca6b)
+    hash ^= hash >>> 13
+    hash = Math.imul(hash, 0xc2b2ae35)
+    hash ^= hash >>> 16
+    return hash
 }
 
 function hashToUnitInterval(input: string): number {
-    let hash = 0
+    let hash = 0x811c9dc5
     for (let i = 0; i < input.length; i++) {
-        hash = (hash << 5) - hash + input.charCodeAt(i)
-        hash |= 0
+        hash ^= input.charCodeAt(i)
+        hash = Math.imul(hash, 0x01000193)
     }
+    hash = fmix32(hash)
     return (hash >>> 0) / 0xffffffff
 }
 
@@ -147,6 +186,15 @@ function weighArtistCandidates(candidates: DatedPV[]): Map<DatedPV, number> {
     return weights
 }
 
+function getDallasDateKey(): string {
+    return new Intl.DateTimeFormat("en-CA", {
+        timeZone: "America/Chicago",
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+    }).format(new Date())
+}
+
 function pickWeightedDaily(candidates: DatedPV[], seedKey: string): DatedPV {
     if (candidates.length <= 1) return candidates[0]
 
@@ -154,8 +202,8 @@ function pickWeightedDaily(candidates: DatedPV[], seedKey: string): DatedPV {
     const ordered = [...candidates]
     const totalWeight = ordered.reduce((sum, c) => sum + (weights.get(c) ?? 0), 0)
 
-    const daysSinceEpoch = Math.floor(Date.now() / 86_400_000)
-    const draw = hashToUnitInterval(`${seedKey}-${daysSinceEpoch}`) * totalWeight
+    const dallasDateKey = getDallasDateKey()
+    const draw = hashToUnitInterval(`${seedKey}-${dallasDateKey}`) * totalWeight
 
     let remaining = draw
     for (const candidate of ordered) {

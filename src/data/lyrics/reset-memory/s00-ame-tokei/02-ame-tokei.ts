@@ -8,7 +8,7 @@ const ameTokei: Lyric = {
             original: "雨時計",
             english: "clepsydra"
         },
-        PV: "youtu.be/gbmmIuIO9FI",
+        PV: "youtu.be/sfIYBbD3TCo",
         composition: {
             lyrics: "rain",
             music: "rain",

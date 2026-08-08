@@ -8,7 +8,7 @@ const ceobhran: Lyric = {
             original: "Ceobhrán",
             english: "Little Mist",
         },
-        PV: "youtu.be/4SuXcPpa7G4",
+        PV: "youtu.be/rBWpJfKTzJE",
         releaseDate: 210224,
         rank: "E",
         composition: {

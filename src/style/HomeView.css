@@ -790,6 +790,14 @@
         order: 2;
     }
 
+    .home-demo-artists {
+        order: 1;
+    }
+
+    .home-demo-pvs {
+        order: 3;
+    }
+
     .home-demo-pv-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -804,13 +812,5 @@
     .home-demo-pv-thumb {
         height: auto;
         aspect-ratio: 220 / 124;
-    }
-
-    .home-demo-artists {
-        order: 1;
-    }
-
-    .home-demo-pvs {
-        order: 3;
     }
 }
