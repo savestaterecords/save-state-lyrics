@@ -17,20 +17,21 @@ const judgement: Lyric = {
             {
                 type: "lyrics",
                 text: `
-                as night comes crawling she rises
+                as night comes calling she rises
                 attracted by the thought
                 of something she can't have
-                it's not enough
+                it's not her fault
                 constricting, she lacerates
                 
                 her victims unaware
                 she has you - wicked she hunts
                 has you in her sights - villainous ones
+                she longs for blood
                 
                 and as it was judgement day
                 no sign of grace
                 her judgement's cast
-                and you her prey   
+                and you're her prey   
                 `
             },
             {
@@ -59,6 +60,10 @@ const judgement: Lyric = {
             {
                 type: "feature",
                 text: `
+                I'll cross my heart
+                and hope to die
+                and as a heathen testify
+                
                 you love the taste of my blood
                 elixir as it pours
                 my hearts beats til it can no more
