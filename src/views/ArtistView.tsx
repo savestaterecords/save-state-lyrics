@@ -30,7 +30,7 @@ const sectionLabels: Record<(typeof sectionOrder)[number], string> = {
 
 export default function ArtistView({ artist }: ArtistViewProps) {
     const { showTranslation } = useTranslation()
-    const miscTracks = getMiscTracksByArtist(artist.slug)
+    const miscTracks = getMiscTracksByArtist(artist.slug).filter((track) => track.private !== true)
 
     const releaseSections = sectionOrder
         .map((type) => ({

@@ -12,9 +12,9 @@ export function getReleaseImages(
     ]
 
     const fullCandidates = [
+        `../img/release/${artistSlug}/${releaseSlug}.webp`,
         `../img/release/${artistSlug}/${releaseSlug}.jpg`,
         `../img/release/${artistSlug}/${releaseSlug}.jpeg`,
-        `../img/release/${artistSlug}/${releaseSlug}.webp`,
     ]
 
     let thumb: string | undefined

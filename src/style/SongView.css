@@ -240,7 +240,7 @@
 }
 
 .song-lyric-text.feature {
-    color: hsl(var(--theme-h), var(--theme-s), 90%);
+    color: hsl(var(--theme-h), calc(var(--theme-s) * 1.15), 76%);
 }
 
 @media (prefers-color-scheme: light) {

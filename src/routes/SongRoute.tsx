@@ -2,23 +2,17 @@ import { useParams } from "react-router-dom"
 import { getArtistBySlug } from "../data/registry.ts"
 import SongView from "../views/SongView.tsx"
 import { getLyricByRelease } from "../utils/resolveLyricsBySlug.ts"
+import { useNoindex } from "../utils/useNoindex.ts"
 
 export default function SongRoute() {
     const { artistSlug, releaseSlug, trackSlug } = useParams()
 
-    if (!artistSlug || !releaseSlug || !trackSlug) {
-        return <div className="site-column">Nothing added yet. Tell Rain to work harder.</div>
-    }
+    const artist = artistSlug ? getArtistBySlug(artistSlug) : undefined
+    const release = artist?.releases.find((entry) => entry.slug === releaseSlug)
 
-    const artist = getArtistBySlug(artistSlug)
+    useNoindex(release?.private === true)
 
-    if (!artist) {
-        return <div className="site-column">Nothing added yet. Tell Rain to work harder.</div>
-    }
-
-    const release = artist.releases.find((entry) => entry.slug === releaseSlug)
-
-    if (!release) {
+    if (!artistSlug || !releaseSlug || !trackSlug || !artist || !release) {
         return <div className="site-column">Nothing added yet. Tell Rain to work harder.</div>
     }
 

@@ -3,6 +3,8 @@ import type { TranslatableText } from "../types/Lyric.ts"
 import { getReleaseBySlug } from "./resolveRelease.ts"
 import { getReleaseOrdinal, ordinalLabel } from "./getReleaseOrdinal.ts"
 import { getReleaseImages } from "./resolveReleaseImages.ts"
+import { getLyricBySlug } from "./resolveLyricsBySlug.ts"
+import { getMiscTracksByArtist } from "./resolveMiscTracksByArtist.ts"
 
 export type ResolvedTrack = {
     number: number
@@ -22,6 +24,35 @@ export type ResolvedUpcoming = {
 }
 
 export function resolveUpcoming(upcoming: Upcoming): ResolvedUpcoming {
+    if (upcoming.miscTrackSlug !== undefined) {
+        const lyric = getLyricBySlug(upcoming.miscTrackSlug)
+        const track = getMiscTracksByArtist(upcoming.artistSlug)
+            .find((entry) => entry.slug === upcoming.miscTrackSlug)
+
+        if (!lyric || !track) {
+            return {
+                artistSlug: upcoming.artistSlug,
+                title: upcoming.miscTrackSlug,
+                resources: [],
+            }
+        }
+
+        const { thumb, full } = getReleaseImages(upcoming.artistSlug, upcoming.miscTrackSlug)
+
+        return {
+            artistSlug: upcoming.artistSlug,
+            title: lyric.head.title,
+            releaseDate: lyric.head.releaseDate,
+            note: "single",
+            resources: [
+                { label: "lyrics", href: `/${upcoming.artistSlug}/misc/${upcoming.miscTrackSlug}/` },
+            ],
+            art: thumb,
+            artFull: full,
+            accentHue: lyric.head.theme?.Hue,
+        }
+    }
+
     if (upcoming.releaseSlug === undefined) {
         return {
             artistSlug: upcoming.artistSlug,

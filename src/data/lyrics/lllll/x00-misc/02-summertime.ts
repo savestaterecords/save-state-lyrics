@@ -11,6 +11,14 @@ const summertime: Lyric = {
             lyrics: "Rain",
             music: "Rain"
         },
+        theme: {
+            Hue: 43,
+            strength: "70%",
+            falloffHue: 25,
+            falloffStrength: "45%",
+            toWhite: "6%",
+            titlesHue: 40,
+        },
     },
 
     body: {

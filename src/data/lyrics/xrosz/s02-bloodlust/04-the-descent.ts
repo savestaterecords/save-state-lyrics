@@ -47,9 +47,6 @@ const theDescent: Lyric = {
         I am a witness to my own end
         I can’t believe how far I’ve descended
         `,
-        credits: `
-        photography and videography by Tiffany Nguyễn & Luzan Tuladhar
-        `,
     },
 }
 

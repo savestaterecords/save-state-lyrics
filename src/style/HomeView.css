@@ -111,7 +111,9 @@
     padding: 1rem 2rem;
     border: 1px solid var(--line-soft);
     border-radius: 12px;
-    background: hsl(0 0% 100% / 0.02);
+    background: hsl(0 0% 10% / 0.38);
+    backdrop-filter: blur(20px) saturate(150%);
+    -webkit-backdrop-filter: blur(20px) saturate(150%);
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -188,8 +190,9 @@
     justify-content: center;
 
     padding: 1rem;
-    background: hsl(0 0% 0% / 0.82);
-    backdrop-filter: blur(6px);
+    background: hsl(0 0% 0% / 0.5);
+    backdrop-filter: blur(20px) saturate(150%);
+    -webkit-backdrop-filter: blur(20px) saturate(150%);
 }
 
 .home-demo-upcoming-art-modal-image {
@@ -281,8 +284,8 @@
     }
 
     .home-demo-upcoming-art {
-        width: 48px;
-        height: 48px;
+        width: 64px;
+        height: 64px;
     }
 
     .home-demo-release {

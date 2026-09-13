@@ -3,7 +3,7 @@ import type { CSSProperties } from "react"
 import type { Lyric } from "../types/Lyric.ts"
 import type { Release } from "../types/Release.ts"
 import type { CreditPeople } from "../types/Credit.ts"
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import { useTranslation } from "../context/TranslationContext.tsx"
 import { pickText } from "../utils/pickText.tsx"
 import { renderCreditsWithHandles } from "../utils/renderCreditsWithHandles.tsx"
@@ -12,13 +12,15 @@ import "../style/SongView.css"
 type SongViewProps = {
     lyric: Lyric
     release: Release
+    thumb?: string
+    full?: string
 }
 
 function formatPeople(people: CreditPeople): string {
     return Array.isArray(people) ? people.join(", ") : people
 }
 
-export default function SongView({ lyric, release }: SongViewProps) {
+export default function SongView({ lyric, release, thumb, full }: SongViewProps) {
     const { showTranslation } = useTranslation()
     const navigate = useNavigate()
     const { trackSlug } = useParams()
@@ -26,6 +28,48 @@ export default function SongView({ lyric, release }: SongViewProps) {
 
     const isMisc = release.slug === "misc"
     const theme = release.theme ?? null
+    const songTitle = pickText(lyric.head.title, showTranslation)
+
+    const [artOpen, setArtOpen] = useState(false)
+
+    useEffect(() => {
+        if (!artOpen) return
+
+        const previousOverflow = document.body.style.overflow
+        document.body.style.overflow = "hidden"
+
+        window.history.pushState({ songArtOpen: true }, "")
+
+        const handleKeyDown = (event: KeyboardEvent) => {
+            if (event.key === "Escape") {
+                window.history.back()
+            }
+        }
+
+        const handlePopState = () => {
+            setArtOpen(false)
+        }
+
+        window.addEventListener("keydown", handleKeyDown)
+        window.addEventListener("popstate", handlePopState)
+
+        return () => {
+            document.body.style.overflow = previousOverflow
+            window.removeEventListener("keydown", handleKeyDown)
+            window.removeEventListener("popstate", handlePopState)
+        }
+    }, [artOpen])
+
+    function openArt() {
+        if (!full) return
+        setArtOpen(true)
+    }
+
+    function closeArt() {
+        if (artOpen) {
+            window.history.back()
+        }
+    }
 
     const songThemeStyle = {
         "--theme-h": String(theme?.Hue ?? 0),
@@ -144,8 +188,26 @@ export default function SongView({ lyric, release }: SongViewProps) {
         <div ref={songPageRef} className="song-page" style={songThemeStyle}>
             <div className="site-column song-view">
                 <div className="song-meta">
+                    {full && (
+                        <button
+                            type="button"
+                            className="release-art-button"
+                            onClick={openArt}
+                            aria-label={`Open ${songTitle} album art`}
+                        >
+                            <div className="release-art-frame">
+                                <img
+                                    className="release-art"
+                                    src={thumb ?? full}
+                                    alt={`${songTitle} album art`}
+                                    draggable={false}
+                                />
+                            </div>
+                        </button>
+                    )}
+
                     <h1 className="song-title">
-                        {pickText(lyric.head.title, showTranslation)}
+                        {songTitle}
                     </h1>
 
                     <p className="song-subtitle">
@@ -239,6 +301,36 @@ export default function SongView({ lyric, release }: SongViewProps) {
                     </div>
                 )}
             </div>
+
+            {artOpen && full && (
+                <div
+                    className="release-art-modal"
+                    role="dialog"
+                    aria-modal="true"
+                    aria-label={`${songTitle} album art`}
+                    onClick={closeArt}
+                >
+                    <button
+                        type="button"
+                        className="release-art-modal-close"
+                        onClick={(event) => {
+                            event.stopPropagation()
+                            closeArt()
+                        }}
+                        aria-label="Close album art"
+                    >
+                        ×
+                    </button>
+
+                    <img
+                        className="release-art-modal-image"
+                        src={full}
+                        alt={`${songTitle} album art`}
+                        draggable={false}
+                        onClick={(event) => event.stopPropagation()}
+                    />
+                </div>
+            )}
         </div>
     )
 }

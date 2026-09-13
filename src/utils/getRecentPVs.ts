@@ -43,6 +43,8 @@ function getDatedPVsByArtist(artistSlug: string): DatedPV[] {
     }
 
     for (const miscTrack of getMiscTracksByArtist(artist.slug)) {
+        if (miscTrack.private === true) continue
+
         const lyric = getLyricBySlug(miscTrack.slug)
         if (!lyric || !lyric.head.PV || !lyric.head.releaseDate) continue
         if (lyric.head.rank === "F") continue

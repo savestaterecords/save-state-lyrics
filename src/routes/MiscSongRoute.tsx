@@ -3,6 +3,7 @@ import { getArtistBySlug } from "../data/registry.ts"
 import SongView from "../views/SongView.tsx"
 import { getLyricBySlug } from "../utils/resolveLyricsBySlug.ts"
 import { getMiscTracksByArtist } from "../utils/resolveMiscTracksByArtist.ts"
+import { getReleaseImages } from "../utils/resolveReleaseImages.ts"
 import type { Release } from "../types/Release.ts"
 
 export default function MiscSongRoute() {
@@ -42,7 +43,10 @@ export default function MiscSongRoute() {
             title: entry.title,
             slug: entry.slug,
         })),
+        theme: lyric.head.theme,
     }
 
-    return <SongView lyric={lyric} release={miscRelease} />
+    const { thumb, full } = getReleaseImages(artistSlug, trackSlug)
+
+    return <SongView lyric={lyric} release={miscRelease} thumb={thumb} full={full} />
 }

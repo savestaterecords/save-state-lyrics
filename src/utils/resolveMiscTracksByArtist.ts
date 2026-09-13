@@ -4,6 +4,7 @@ type MiscTrackEntry = {
     title: TranslatableText
     slug: string
     ordinal: number
+    private?: boolean
 }
 
 const miscLyricModules = import.meta.glob("../data/lyrics/*/x00-misc/*.ts", {
@@ -29,6 +30,7 @@ export function getMiscTracksByArtist(artistSlug: string): MiscTrackEntry[] {
             title: module.default.head.title,
             slug: extractMiscSlug(path),
             ordinal: extractOrdinal(path),
+            private: module.default.head.private,
         }))
         .sort((a, b) => b.ordinal - a.ordinal)
 }

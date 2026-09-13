@@ -1,6 +1,6 @@
 import type { Lyric } from "../../../../types/Lyric.ts"
 
-const judgement: Lyric = {
+const bloodlust: Lyric = {
     slug: "judgement",
 
     head: {
@@ -81,13 +81,7 @@ const judgement: Lyric = {
                 `
             }
         ],
-        credits: `
-        Directed by ___
-        
-        Videography by:
-        ___
-        `,
     },
 }
 
-export default judgement
+export default bloodlust

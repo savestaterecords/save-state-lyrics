@@ -1,4 +1,5 @@
 import type { Composition } from "./Credit.ts"
+import type { ReleaseTheme } from "./Release.ts"
 
 export type TranslatableText =
     | string
@@ -31,6 +32,8 @@ export type Lyric = {
         composition: Composition
         releaseDate?: number
         rank?: "A" | "B" | "D" | "E" | "F"
+        theme?: ReleaseTheme
+        private?: boolean
     }
 
     body:

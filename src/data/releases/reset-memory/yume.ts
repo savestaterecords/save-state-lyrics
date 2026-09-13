@@ -14,6 +14,7 @@ samara
 春夏秋冬 \\shunkashuuto
 窓ノ外、雨。\\mado-no-soto-ame
 chiaroscuro
+夢 \\yume
 `
 
 const yume: Release = {

@@ -7,12 +7,18 @@ import { pickText } from "../../utils/pickText.tsx"
 import { formatReleaseDate } from "../../utils/formatReleaseDate.ts"
 import { buildUpcomingStatusLine } from "../../utils/buildUpcomingStatusLine.ts"
 import { resolveUpcoming } from "../../utils/resolveUpcoming.ts"
+import { getDallasReleaseDateKey } from "../../utils/getDallasReleaseDateKey.ts"
 import upcoming from "../../data/upcoming.ts"
 
 export default function UpcomingModule() {
     const { showTranslation } = useTranslation()
 
-    const resolvedUpcoming = upcoming ? resolveUpcoming(upcoming) : null
+    const resolvedUpcomingRaw = upcoming ? resolveUpcoming(upcoming) : null
+    const resolvedUpcoming = resolvedUpcomingRaw
+        && resolvedUpcomingRaw.releaseDate !== undefined
+        && getDallasReleaseDateKey() >= resolvedUpcomingRaw.releaseDate
+        ? null
+        : resolvedUpcomingRaw
     const upcomingArtist = resolvedUpcoming ? getArtistBySlug(resolvedUpcoming.artistSlug) : undefined
     const upcomingArtistLabel = upcomingArtist
         ? pickText(upcomingArtist.name, showTranslation)

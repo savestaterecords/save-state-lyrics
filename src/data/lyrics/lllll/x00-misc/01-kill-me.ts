@@ -11,6 +11,14 @@ const killMe: Lyric = {
             lyrics: "Alyssa",
             music: "Rain"
         },
+        theme: {
+            Hue: 208,
+            strength: "60%",
+            falloffHue: 195,
+            falloffStrength: "40%",
+            toWhite: "0%",
+            titlesHue: 205,
+        },
     },
 
     body: {
