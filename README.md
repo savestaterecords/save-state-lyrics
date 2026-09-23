@@ -51,5 +51,7 @@ New artists, releases, and lyrics can be added through the existing content stru
 ## AI assistance
 
 Claude wrote css bc i'm garbage at css
+
 ChatGPT wrote this readme bc i'm garbage at readmes
+
 i did the rest
